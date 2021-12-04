@@ -29,9 +29,6 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
         jdbcTemplate.update(sqlInsertParent, TEST_PARENT_ID);
         jdbcTemplate.update(sqlInsertEmergency, TEST_EMERGENCY_ID);
         jdbcAttendeeDAO = new JdbcAttendeeDAO(jdbcTemplate);
-
-
-
     }
 
     @Test
@@ -41,8 +38,6 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
         List<Attendee> actualResults = jdbcAttendeeDAO.findALl();
 
         Assert.assertEquals(originalRowCount + 1, actualResults.size());
-
-
     }
 
     private Attendee insertAttendee(){
