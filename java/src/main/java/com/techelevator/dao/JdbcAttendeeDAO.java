@@ -21,7 +21,9 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
     @Override
     public List<Attendee> findALl() {
         List<Attendee> attendees = new ArrayList<>();
-        String sql = "select * from attendees";
+        String sql = "SELECT attendees.attendee_id, attendees.first_name, attendees.last_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.allergies, attendees.payment_status, " +
+                "attendees.additonal_information, attendees.assigned_registrar, parents.first_name AS parent_first_name, parents.last_name AS parent_last_name, parents.email AS parent_email, parents.address AS parent_address, parents.phone AS parent_phone, emergency_contacts.first_name AS emergency_first_name, emergency_contacts.last_name AS emergency_last_name, emergency_contacts.phone AS emergency_phone " +
+                "from attendees JOIN parents ON attendees.parent_id = parents.parent_id JOIN emergency_contacts ON attendees.emergency_contact_id = emergency_contacts.emergency_contact_id;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -46,6 +48,15 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
        attendee.setPaymentStatus(result.getBoolean("payment_status"));
        attendee.setAdditionalInfo(result.getString("additonal_information"));
        attendee.setAssignedRegistrar(result.getString("assigned_registrar"));
+       attendee.setParentFirstName(result.getString("parent_first_name"));
+       attendee.setParentLastName(result.getString("parent_last_name"));
+       attendee.setParentEmail(result.getString("parent_email"));
+       attendee.setAddress(result.getString("parent_address"));
+       attendee.setParentPhone(result.getString("parent_phone"));
+       attendee.setEmgcyFirstName(result.getString("emergency_first_name"));
+       attendee.setEmgcyLastName(result.getString("emergency_last_name"));
+       attendee.setEmgcyPhone(result.getString("emergency_phone"));
+
        return attendee;
     }
 }
