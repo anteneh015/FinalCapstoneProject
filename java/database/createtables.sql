@@ -42,3 +42,7 @@ constraint fk_emergency_contact_id foreign key (emergency_contact_id) references
 
 INSERT INTO parents(parent_id, first_name, last_name, email, address, phone) VALUES (DEFAULT, 'Rachelle', 'Rauh', 'rechelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-2222');
 INSERT INTO emergency_contacts(emergency_contact_id, first_name, last_name, email, address, phone) VALUES (DEFAULT, 'Eva', 'Rauh', 'eva123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-3333');
+INSERT INTO attendees (attendee_id, parent_id, user_id, emergency_contact_id, first_name, last_name, date_of_birth, gender, age_group, allergies, payment_status, additonal_information, assigned_registrar) 
+VALUES (DEFAULT, 1, 1, 1, 'Nikki', 'Rauh', '2011-01-15', 'Female', 2, '', TRUE, '', 'Dora');
+INSERT INTO attendees (attendee_id, parent_id, user_id, emergency_contact_id, first_name, last_name, date_of_birth, gender, age_group, allergies, payment_status, additonal_information, assigned_registrar) 
+VALUES (DEFAULT, 1, 1, 1, 'Andy', 'Rauh', '2016-05-17', 'Male', 1, '', TRUE, '', 'Dora');

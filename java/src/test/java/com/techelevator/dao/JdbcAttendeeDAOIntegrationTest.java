@@ -19,15 +19,15 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
 
     @Before
     public void setup(){
-//        String sqlInsertParent = "INSERT INTO parents(parent_id, first_name, last_name, email, address, phone) " +
-//            "VALUES (DEFAULT, 'Billy', 'Musk', 'rechelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-2222');";
-//        String sqlInsertEmergency = "INSERT INTO emergency_contacts(emergency_contact_id, first_name, last_name, email, address, phone) " +
-//                "VALUES (DEFAULT, 'Larry', 'King', 'eva123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-3333');";
+        String sqlInsertParent = "INSERT INTO parents(parent_id, first_name, last_name, email, address, phone) " +
+            "VALUES (?, 'Billy', 'Musk', 'rechelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-2222');";
+        String sqlInsertEmergency = "INSERT INTO emergency_contacts(emergency_contact_id, first_name, last_name, email, address, phone) " +
+                "VALUES (?, 'Larry', 'King', 'eva123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-3333');";
 
         DataSource dataSource = this.getDataSource();
         jdbcTemplate = new JdbcTemplate(dataSource);
-//        jdbcTemplate.update(sqlInsertParent, TEST_PARENT_ID);
-//        jdbcTemplate.update(sqlInsertEmergency, TEST_EMERGENCY_ID);
+        jdbcTemplate.update(sqlInsertParent, TEST_PARENT_ID);
+        jdbcTemplate.update(sqlInsertEmergency, TEST_EMERGENCY_ID);
         jdbcAttendeeDAO = new JdbcAttendeeDAO(jdbcTemplate);
 
 
@@ -57,8 +57,8 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
         attendee.setAdditionalInfo("nothing");
         attendee.setAssignedRegistrar("James");
 
-        String sqlInsertAttendee = "INSERT INTO attendees VALUES (default, ?,?,?,?,?,?,?,?,?) RETURNING attendee_id";
-        Integer attendeeID = jdbcTemplate.queryForObject(sqlInsertAttendee, Integer.class, attendee.getFirstName(),
+        String sqlInsertAttendee = "INSERT INTO attendees VALUES (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING attendee_id";
+        Integer attendeeID = jdbcTemplate.queryForObject(sqlInsertAttendee, Integer.class, TEST_PARENT_ID, 1, TEST_EMERGENCY_ID, attendee.getFirstName(),
                 attendee.getLastName(), attendee.getDateOfBirth(), attendee.getGender(), attendee.getAgeGroup(), attendee.getAllergies(),
                 attendee.isPaymentStatus(), attendee.getAdditionalInfo(), attendee.getAssignedRegistrar());
         attendee.setAttendeeId(attendeeID);
