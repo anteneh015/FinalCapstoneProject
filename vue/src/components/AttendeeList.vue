@@ -2,7 +2,7 @@
   <div class="attendeeList">
   <attendee 
   v-for="attendee in attendees"
-  v-bind:key="attendee.id"
+  v-bind:key="attendee.attendeeId"
   v-bind:attendee="attendee"
   />
 
@@ -11,7 +11,7 @@
 
 <script>
 import attendeeService from '@/services/AttendeeService'
-import Attendee from './Attendee.vue'
+import Attendee from '@/components/Attendee.vue'
 
 export default {
     name: 'attendee-list',
@@ -23,11 +23,18 @@ export default {
     components: {
         Attendee
     },
+    computed: {
+        attendees() {
+            const attendees = this.$store.state.attendees;
+            return attendees;
+        }
+    },
     created() {
 
         attendeeService.getAllAttendees()
         .then( response => {
-            this.$store.commit("SET_ATTENDEES", response.data)
+            this.$store.commit("SET_ATTENDEES", response.data);
+            
         })
         .catch( error => {
             // TODO: Inform the user there was an error
