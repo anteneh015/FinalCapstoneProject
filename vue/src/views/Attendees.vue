@@ -3,7 +3,7 @@
       <h1>{{$store.state.campName}}</h1>
       <main>
         <attendee-list />
-        {{AttendeeList}}
+        
 
 
       </main>
