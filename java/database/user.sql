@@ -1,25 +1,30 @@
--- ********************************************************************************
--- This script creates the database users and grants them the necessary permissions
--- ********************************************************************************
+SELECT users.user_id, username, balance FROM users
+JOIN accounts ON users.user_id = accounts.user_id 
+WHERE username != 'liping';
 
-CREATE USER final_capstone_owner
-WITH PASSWORD 'finalcapstone';
+SELECT balance FROM accounts WHERE account_id = 2001;
 
-GRANT ALL
-ON ALL TABLES IN SCHEMA public
-TO final_capstone_owner;
+INSERT INTO transfers (transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount) 
+VALUES (DEFAULT, ?, ?, ?, ?, ?);
+               
+                
+SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, users.username AS username FROM transfers
+JOIN accounts ON transfers.account_from = accounts.account_id 
+JOIN users ON accounts.user_id = users.user_id 
+WHERE transfer_status_id = ? AND account_to = ?
 
-GRANT ALL
-ON ALL SEQUENCES IN SCHEMA public
-TO final_capstone_owner;
+SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, users.username AS username 
+                FROM transfers
+                JOIN accounts ON transfers.account_to = accounts.account_id 
+                JOIN users ON accounts.user_id = users.user_id 
+                WHERE transfer_status_id = 1 AND account_to = ?
 
-CREATE USER final_capstone_appuser
-WITH PASSWORD 'finalcapstone';
+SELECT transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount, users.username
+FROM transfers
+JOIN accounts ON transfers.account_from = accounts.account_id
+JOIN users ON accounts.user_id = users.user_id
+WHERE account_from = 2002 OR account_to = 2002;
 
-GRANT SELECT, INSERT, UPDATE, DELETE
-ON ALL TABLES IN SCHEMA public
-TO final_capstone_appuser;
-
-GRANT USAGE, SELECT
-ON ALL SEQUENCES IN SCHEMA public
-TO final_capstone_appuser;
+SELECT account_id FROM accounts
+JOIN users ON accounts.user_id = users.user_id
+WHERE username = ?
