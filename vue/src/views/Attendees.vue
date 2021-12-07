@@ -2,23 +2,22 @@
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
     <main>
-      <div class="trello-list">
-        <ol class="cards">
-        <li>ID</li>
-        <li>Name</li>
-        <li>DOB</li>
-        <li>Gender</li>
-        <li>Group</li>
-        <li>Pay Status</li>
-        <li>Notes</li>
-        <li>Registrar</li>
-        <li>Guardian Name</li>
-        <li>Email</li>
-        <li>Address</li>
-        <li>Phone</li>
-        <li>Emgcy Contact</li>
+        <ol class="label">
+          <li>ID</li>
+          <li>Name</li>
+          <li>DOB</li>
+          <li>Gender</li>
+          <li>Group</li>
+          <li>Pay Status</li>
+          <li>Notes</li>
+          <li>Registrar</li>
+          <li>Guardian Name</li>
+          <li>Email</li>
+          <li>Address</li>
+          <li>Phone</li>
+          <li>Emgcy Contact</li>
         </ol>
-      </div>
+      
 
       <attendee-list />
     </main>
@@ -46,31 +45,28 @@ export default {
   display: flex;
   flex-direction: column;
 }
-#labels {
-  display: flex;
-  justify-content: space-between;
-}
-
-#labels li {
-  list-style-type: none;
-}
 
 h1 {
   align-self: center;
 }
 
-div.trello-list {
-
-
-    /* Layout */
-    display: inline-block;
-    width: 300px;
+ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-right: 10px;
     vertical-align: top; 
-
-    /* Look & Feel */
     background-color: #DDD;
-    
     border-radius: 2px 3px;
+}
+
+li {
+    list-style: none;
+    background-color: rgb(255, 255, 255);
+    font-size: .9rem;
+    border-radius: 1px;
+    margin-bottom: 10px;
+    padding: 8px;
+    white-space: normal;
 }
 </style>

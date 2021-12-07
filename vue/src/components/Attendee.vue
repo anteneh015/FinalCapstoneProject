@@ -1,65 +1,27 @@
 <template>
   <div class="attendee">
-    <ul id= "camper"> 
+   
+    <ol class="cards">
       <li>{{ attendee.attendeeId }}</li>
-      <li>{{ attendee.firstName }} {{ attendee.lastName }}</li>
-      <li>{{ attendee.ageGroup }}</li>
+      <li>{{ attendee.attendeeName }}</li>
       <li>{{ attendee.dateOfBirth }}</li>
       <li>{{ attendee.gender }}</li>
-      <li>{{ attendee.paymentStatus }}</li>
-      <li>{{ attendee.additionalInfo }}</li>
-      <li>{{ attendee.assignedRegistrar }}</li>
-      <li>{{ attendee.parentFirstName }} {{ attendee.parentLastName }}</li>
-      <li>{{ attendee.parentEmail }}</li>
+      <li>{{ attendee.ageGroup }}</li>
+      <li>
+         <div class="labels">
+              <span class="paymentStatus"></span>
+          </div>
+            {{ attendee.paymentStatus }}
+      </li>
+      <li>{{ attendee.notes }}</li>
+      <li>{{ attendee.registrar }}</li>
+      <li>{{ attendee.guardianName }}</li>
+      <li>{{ attendee.email }}</li>
       <li>{{ attendee.address }}</li>
-      <li>{{ attendee.parentPhone }}</li>
-      <li>{{ attendee.emgcyFirstName }} {{ attendee.emgcyLastName }} {{ attendee.emgcyPhone }}</li>
-      <li></li>
-    <div class="trello-list">
-        <h2>Module 1 Week 1</h2>
-        <ol class="cards">
-          <li class="card">
-            <div class="labels">
-              <span class="label pathway"></span>
-            </div>
-            PATHWAY: INTRODUCTION
-          </li>
-          <li class="card">
-            <div class="labels">
-              <span class="label individual"></span>
-            </div>
-            Introduction to Tools
-          </li>
-          <li class="card">
-            <div class="labels">
-              <span class="label individual"></span>
-            </div>
-            Variables and Datatypes
-          </li>
-          <li class="card">
-            <div class="labels">
-              <span class="label individual"></span>
-            </div>
-            Expressions, Statements, Blocks, and Logical Branching
-          </li>
-          <li class="card">
-            <div class="labels">
-              <span class="label individual"></span>
-            </div>
-            Loops and Arrays
-          </li>
-          <li class="card">
-            <div class="labels">
-              <span class="label individual"></span>
-              <span class="label pair"></span>
-            </div>
-            Command-Line Programs
-          </li>
-        </ol>
-        <a href="#">Add another card</a>
-      </div>
-    </ul> 
-
+      <li>{{ attendee.guardianPhone }}</li>
+      <li>{{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
+     </ol>
+    
   </div>
 </template>
 
@@ -73,13 +35,24 @@ export default {
 </script>
 
 <style>
-#camper li {
-    list-style-type: none;
+ol {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 10px;
+    vertical-align: top; 
+    background-color: #DDD;
+    border-radius: 2px 3px;
 }
 
-#camper {
-  display: flex;
-  justify-content: space-between
+li {
+    list-style: none;
+    background-color: rgb(255, 255, 255);
+    font-size: .9rem;
+    border-radius: 1px;
+    margin-bottom: 10px;
+    padding: 8px;
+    white-space: normal;
 }
 
 </style>
