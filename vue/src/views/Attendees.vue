@@ -2,30 +2,25 @@
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
     <main>
-      <attendee-list/>
-<!-- 
-       <section id="labels">
-         <article></article>
-        <article>First Name</article>
-        <article>Last Name</article>
-        <article>Age Group</article> -->
 
-      <section id="labels">
-  <article id="A">Attendee ID</article>
-  <article id="B">First Name</article>
-  <article id="C">Last Name</article>
-  <article id="D">Age Group</article>
-
-</section>
-      <!-- </section> -->
-      <section id="attendee">
-        <article>{{ $store.state.attendees.attendeeId }}</article>
-        <article>{{ $store.state.attendees.firstName }}</article>
-         <article>123</article>
-        <article>Harry</article>
-        <article>Smith</article>
-        <article>Group: C</article>
-      </section>
+      <ul id="labels">
+  <li>ID</li>
+  <li>Name</li>
+  <li>Group</li>
+  <li>DOB</li>
+  <li>Sex</li>
+  <li>Pay Status</li>
+  <li>Extra Info</li>
+  <li>Registrar</li>
+  <li>Parent Name</li>
+  <li>Email</li>
+  <li>Address</li>
+  <li>Phone</li>
+  <li>Emgcy Contact</li>
+  
+</ul>
+    <attendee-list/>
+      
     </main>
   </div>
 </template>
@@ -47,9 +42,22 @@ export default {
 </script>
 
 <style>
-
-#A #B #C {
+.camp {
   display: flex;
+  flex-direction: column;
 }
+#labels {
+  display: flex;
+  justify-content: space-between
+}
+
+#labels li {
+    list-style-type: none;
+}
+
+h1 {
+  align-self: center;
+}
+
 
 </style>
