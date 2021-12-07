@@ -26,7 +26,16 @@ export default {
     computed: {
         attendees() {
             const attendees = this.$store.state.attendees;
-            return attendees;
+            const searchWord = this.$store.state.searchWord;
+            return attendees.filter( attendee => {
+              // if (attendees === 'All') {
+
+              // }
+
+              
+              return attendees === 'All'? true : attendee.searchWord === searchWord;
+            })
+            
         }
     },
     created() {

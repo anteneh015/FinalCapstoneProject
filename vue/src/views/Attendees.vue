@@ -1,6 +1,7 @@
 <template>
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
+    <attendee-filter />
     <main>
         <ol class="label">
           <li>ID</li>
@@ -26,11 +27,13 @@
 
 <script>
 import AttendeeList from "@/components/AttendeeList";
+import AttendeeFilter from '../components/AttendeeFilter.vue';
 
 export default {
   name: "attendees",
   components: {
     AttendeeList,
+    AttendeeFilter,
   },
   computed: {
     showAttendees() {
