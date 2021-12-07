@@ -6,24 +6,19 @@ import java.util.Objects;
 public class Attendee {
 
     private int attendeeId;
-    private String firstName;
-    private String lastName;
+    private String attendeeName;
     private LocalDate dateOfBirth;
     private String gender;
     private int ageGroup;
-    private String allergies;
     private boolean paymentStatus;
-    private String additionalInfo;
-    private String assignedRegistrar;
-    private String parentFirstName;
-    private String parentLastName;
-    private String parentEmail;
+    private String notes;
+    private String registrar;
+    private String guardianName;
+    private String email;
     private String address;
-    private String parentPhone;
-    private String emgcyFirstName;
-    private String emgcyLastName;
+    private String guardianPhone;
+    private String emgcyName;
     private String emgcyPhone;
-
 
     public int getAttendeeId() {
         return attendeeId;
@@ -33,20 +28,12 @@ public class Attendee {
         this.attendeeId = attendeeId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getAttendeeName() {
+        return attendeeName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setAttendeeName(String attendeeName) {
+        this.attendeeName = attendeeName;
     }
 
     public LocalDate getDateOfBirth() {
@@ -73,14 +60,6 @@ public class Attendee {
         this.ageGroup = ageGroup;
     }
 
-    public String getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(String allergies) {
-        this.allergies = allergies;
-    }
-
     public boolean isPaymentStatus() {
         return paymentStatus;
     }
@@ -89,44 +68,36 @@ public class Attendee {
         this.paymentStatus = paymentStatus;
     }
 
-    public String getAdditionalInfo() {
-        return additionalInfo;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
-    public String getAssignedRegistrar() {
-        return assignedRegistrar;
+    public String getRegistrar() {
+        return registrar;
     }
 
-    public void setAssignedRegistrar(String assignedRegistrar) {
-        this.assignedRegistrar = assignedRegistrar;
+    public void setRegistrar(String registrar) {
+        this.registrar = registrar;
     }
 
-    public String getParentFirstName() {
-        return parentFirstName;
+    public String getGuardianName() {
+        return guardianName;
     }
 
-    public void setParentFirstName(String parentFirstName) {
-        this.parentFirstName = parentFirstName;
+    public void setGuardianName(String guardianName) {
+        this.guardianName = guardianName;
     }
 
-    public String getParentLastName() {
-        return parentLastName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setParentLastName(String parentLastName) {
-        this.parentLastName = parentLastName;
-    }
-
-    public String getParentEmail() {
-        return parentEmail;
-    }
-
-    public void setParentEmail(String parentEmail) {
-        this.parentEmail = parentEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAddress() {
@@ -137,28 +108,20 @@ public class Attendee {
         this.address = address;
     }
 
-    public String getParentPhone() {
-        return parentPhone;
+    public String getGuardianPhone() {
+        return guardianPhone;
     }
 
-    public void setParentPhone(String parentPhone) {
-        this.parentPhone = parentPhone;
+    public void setGuardianPhone(String guardianPhone) {
+        this.guardianPhone = guardianPhone;
     }
 
-    public String getEmgcyFirstName() {
-        return emgcyFirstName;
+    public String getEmgcyName() {
+        return emgcyName;
     }
 
-    public void setEmgcyFirstName(String emgcyFirstName) {
-        this.emgcyFirstName = emgcyFirstName;
-    }
-
-    public String getEmgcyLastName() {
-        return emgcyLastName;
-    }
-
-    public void setEmgcyLastName(String emgcyLastName) {
-        this.emgcyLastName = emgcyLastName;
+    public void setEmgcyName(String emgcyName) {
+        this.emgcyName = emgcyName;
     }
 
     public String getEmgcyPhone() {
@@ -174,13 +137,17 @@ public class Attendee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendee attendee = (Attendee) o;
-        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && paymentStatus == attendee.paymentStatus && Objects.equals(firstName, attendee.firstName) && Objects.equals(lastName, attendee.lastName)
-                && Objects.equals(dateOfBirth, attendee.dateOfBirth) && Objects.equals(gender, attendee.gender) && Objects.equals(allergies, attendee.allergies) && Objects.equals(additionalInfo, attendee.additionalInfo) && Objects.equals(assignedRegistrar, attendee.assignedRegistrar) && Objects.equals(parentFirstName, attendee.parentFirstName)
-                && Objects.equals(parentLastName, attendee.parentLastName) && Objects.equals(parentEmail, attendee.parentEmail) && Objects.equals(address, attendee.address) && Objects.equals(parentPhone, attendee.parentPhone) && Objects.equals(emgcyFirstName, attendee.emgcyFirstName) && Objects.equals(emgcyLastName, attendee.emgcyLastName) && Objects.equals(emgcyPhone, attendee.emgcyPhone);
+        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && paymentStatus == attendee.paymentStatus
+                && Objects.equals(attendeeName, attendee.attendeeName) && Objects.equals(dateOfBirth, attendee.dateOfBirth)
+                && Objects.equals(gender, attendee.gender) && Objects.equals(notes, attendee.notes)
+                && Objects.equals(registrar, attendee.registrar) && Objects.equals(guardianName, attendee.guardianName)
+                && Objects.equals(email, attendee.email) && Objects.equals(address, attendee.address)
+                && Objects.equals(guardianPhone, attendee.guardianPhone) && Objects.equals(emgcyName, attendee.emgcyName)
+                && Objects.equals(emgcyPhone, attendee.emgcyPhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attendeeId, firstName, lastName, dateOfBirth, gender, ageGroup, allergies, paymentStatus, additionalInfo, assignedRegistrar, parentFirstName, parentLastName, parentEmail, address, parentPhone, emgcyFirstName, emgcyLastName, emgcyPhone);
+        return Objects.hash(attendeeId, attendeeName, dateOfBirth, gender, ageGroup, paymentStatus, notes, registrar, guardianName, email, address, guardianPhone, emgcyName, emgcyPhone);
     }
 }

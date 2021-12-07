@@ -2,25 +2,25 @@
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
     <main>
+      <div class="trello-list">
+        <ol class="cards">
+        <li>ID</li>
+        <li>Name</li>
+        <li>DOB</li>
+        <li>Gender</li>
+        <li>Group</li>
+        <li>Pay Status</li>
+        <li>Notes</li>
+        <li>Registrar</li>
+        <li>Guardian Name</li>
+        <li>Email</li>
+        <li>Address</li>
+        <li>Phone</li>
+        <li>Emgcy Contact</li>
+        </ol>
+      </div>
 
-      <ul id="labels">
-  <li>ID</li>
-  <li>Name</li>
-  <li>Group</li>
-  <li>DOB</li>
-  <li>Sex</li>
-  <li>Pay Status</li>
-  <li>Extra Info</li>
-  <li>Registrar</li>
-  <li>Parent Name</li>
-  <li>Email</li>
-  <li>Address</li>
-  <li>Phone</li>
-  <li>Emgcy Contact</li>
-  
-</ul>
-    <attendee-list/>
-      
+      <attendee-list />
     </main>
   </div>
 </template>
@@ -33,11 +33,11 @@ export default {
   components: {
     AttendeeList,
   },
-  computed:{
+  computed: {
     showAttendees() {
       return this.$store.state.attendees;
-    }
-    }
+    },
+  },
 };
 </script>
 
@@ -48,16 +48,29 @@ export default {
 }
 #labels {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 #labels li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 h1 {
   align-self: center;
 }
 
+div.trello-list {
 
+
+    /* Layout */
+    display: inline-block;
+    width: 300px;
+    margin-right: 10px;
+    vertical-align: top; 
+
+    /* Look & Feel */
+    background-color: #DDD;
+    
+    border-radius: 2px 3px;
+}
 </style>

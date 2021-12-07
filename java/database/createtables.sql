@@ -1,48 +1,48 @@
-DROP TABLE IF EXISTS parents;
-DROP TABLE IF EXISTS emergency_contacts;
 DROP TABLE IF EXISTS attendees;
+DROP TABLE IF EXISTS guardians;
 
-CREATE TABLE parents(
-parent_id serial primary key,
-first_name varchar(45) NOT NULL,
-last_name varchar(45) NOT NULL,
+
+CREATE TABLE guardians(
+guardian_id serial primary key,
+guardian_name varchar(90) NOT NULL,
 email varchar(255) NOT NULL,
 address varchar(100) NOT NULL,
-phone varchar(16) NOT NULL 
+guardian_phone varchar(16) NOT NULL,
+emergency_name varchar(90) NOT NULL,
+emergency_phone varchar(16) NOT NULL  
 );
 
-CREATE TABLE emergency_contacts(
-emergency_contact_id serial primary key,
-first_name varchar(45) NOT NULL,
-last_name varchar(45) NOT NULL,
-email varchar(255) NOT NULL,
-address varchar(100) NOT NULL,
-phone varchar(16) NOT NULL 
-);
 
 CREATE TABLE attendees(
 attendee_id serial primary key,  
-parent_id bigint,
+guardian_id bigint,
 user_id bigint,
-emergency_contact_id bigint,
-first_name varchar(45) NOT NULL,
-last_name varchar(45) NOT NULL,
+attendee_name varchar(90) NOT NULL,
 date_of_birth date NOT NULL,
 gender varchar(45) NOT NULL, 
 age_group int NOT NULL,
-allergies varchar(124),
 payment_status boolean NOT NULL, 
-additonal_information varchar(255),
-assigned_registrar varchar(45) NOT NULL, 
+notes varchar(255),
+registrar varchar(45) NOT NULL, 
 
-constraint fk_parent_id foreign key (parent_id) references parents(parent_id),
-constraint fk_user_id foreign key (user_id) references users(user_id),
-constraint fk_emergency_contact_id foreign key (emergency_contact_id) references emergency_contacts(emergency_contact_id)
+constraint fk_guardian_id foreign key (guardian_id) references guardians(guardian_id),
+constraint fk_user_id foreign key (user_id) references users(user_id)
 ); 
 
-INSERT INTO parents(parent_id, first_name, last_name, email, address, phone) VALUES (DEFAULT, 'Rachelle', 'Rauh', 'rechelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-2222');
-INSERT INTO emergency_contacts(emergency_contact_id, first_name, last_name, email, address, phone) VALUES (DEFAULT, 'Eva', 'Rauh', 'eva123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-3333');
-INSERT INTO attendees (attendee_id, parent_id, user_id, emergency_contact_id, first_name, last_name, date_of_birth, gender, age_group, allergies, payment_status, additonal_information, assigned_registrar) 
-VALUES (DEFAULT, 1, 1, 1, 'Nikki', 'Rauh', '2011-01-15', 'Female', 2, '', TRUE, '', 'Dora');
-INSERT INTO attendees (attendee_id, parent_id, user_id, emergency_contact_id, first_name, last_name, date_of_birth, gender, age_group, allergies, payment_status, additonal_information, assigned_registrar) 
-VALUES (DEFAULT, 1, 1, 1, 'Andy', 'Rauh', '2016-05-17', 'Male', 1, '', TRUE, '', 'Dora');
+INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Rachelle Rauh', 'rachelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-111-2222', 'Eva', 'Rauh');
+INSERT INTO attendees (attendee_id, guardian_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
+VALUES (DEFAULT, 1, 1, 'Nikki Rauh', '2011-01-15', 'Female', 2, TRUE, 'nothing', 'Dora');
+INSERT INTO attendees (attendee_id, guardian_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
+VALUES (DEFAULT, 1, 1, 'Andy Rauh', '2016-05-17', 'Male', 1, TRUE, 'nothing', 'Dora');
+
+SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, 
+                attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar,
+                guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, 
+                guardians.emergency_phone
+                From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id;
+                
+SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender,
+                attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, 
+                guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, 
+                guardians.emergency_phone
+                From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id; 
