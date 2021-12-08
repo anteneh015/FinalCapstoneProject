@@ -4,7 +4,7 @@
      <div id = "paymentOption">
       <label for="payment">Payment Status: </label>
       <select id="payment" v-model="filter.paymentStatus">
-        <option disabled value="">Please select one</option>
+        <option value="">All</option>
         <option>paid</option>
         <option>unpaid</option>
       </select>
@@ -12,7 +12,7 @@
      <div id = "registrarOption">
       <label for="registrar">Assigned Registrar: </label>
       <select id="registrar" v-model="filter.registrar">
-        <option disabled value="">Please select one</option>
+        <option value="">All</option>
         <option>Dora</option>
         <option>Mike</option>
       </select>
@@ -24,7 +24,7 @@
      <div id = "groupOption">
       <label for="ageGroup">Age Group: </label>
       <select id="ageGroup" v-model="filter.ageGroup">
-        <option disabled value="">Please select one</option>
+        <option value="">All</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>

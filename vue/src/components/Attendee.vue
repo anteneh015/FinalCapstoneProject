@@ -21,6 +21,7 @@
       <li>Address: {{ attendee.address }}</li>
       <li>Phone: {{ attendee.guardianPhone }}</li>
       <li>Emgcy Contact: {{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
+      <button><router-link>Edit fdsakfljdsalfjsdlkjf</router-link></button>
      </ol>
     
   </div>
@@ -39,7 +40,7 @@ export default {
 ol {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-right: 10px;
     vertical-align: top; 
     background-color: #DDD;
