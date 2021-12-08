@@ -45,7 +45,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
         }
        attendee.setGender(result.getString("gender"));
        attendee.setAgeGroup(result.getInt("age_group"));
-       attendee.setPaymentStatus(result.getBoolean("payment_status"));
+       attendee.setPaymentStatus(result.getString("payment_status"));
        attendee.setNotes(result.getString("notes"));
        attendee.setRegistrar(result.getString("registrar"));
        attendee.setGuardianName(result.getString("guardian_name"));

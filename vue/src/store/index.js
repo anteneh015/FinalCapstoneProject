@@ -21,11 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     campName: 'Java Blue Summer Camp',
-    attendees: [],
-    // TODO: Add Missing Records in array
-    searchWords: ['paid', 'Dora'],
-    searchWord: 'All',
-    paymentStatus: true
+    attendees: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -47,11 +43,9 @@ export default new Vuex.Store({
     SET_ATTENDEES(state, attendees){
       state.attendees = attendees;
     },
-    SET_SEARCH_WORD(state, searchWord) {
-      state.searchWord = searchWord;
-    },
-    SET_PAYMENT_STATUS(state, paymentStatus){
-      state.paymentStatus = paymentStatus
-    }
+    // SET_SEARCH_WORD(state, searchWord) {
+      // state.searchWord = searchWord;
+    // },
+   
   }
 })

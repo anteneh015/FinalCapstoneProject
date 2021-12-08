@@ -2,24 +2,25 @@
   <div class="attendee">
    
     <ol class="cards">
-      <li>{{ attendee.attendeeId }}</li>
-      <li>{{ attendee.attendeeName }}</li>
-      <li>{{ attendee.dateOfBirth }}</li>
-      <li>{{ attendee.gender }}</li>
-      <li>{{ attendee.ageGroup }}</li>
+      
+      <li>ID: {{ attendee.attendeeId }}</li>
+      <li>Name: {{ attendee.attendeeName }}</li>
+      <li>DOB: {{ attendee.dateOfBirth }}</li>
+      <li>Gender: {{ attendee.gender }}</li>
+      <li>Group: {{ attendee.ageGroup }}</li>
       <li>
          <div class="labels">
               <span class="paymentStatus"></span>
           </div>
-            {{ attendee.paymentStatus }}
+          Pay Status: {{ attendee.paymentStatus }}
       </li>
-      <li>{{ attendee.notes }}</li>
-      <li>{{ attendee.registrar }}</li>
-      <li>{{ attendee.guardianName }}</li>
-      <li>{{ attendee.email }}</li>
-      <li>{{ attendee.address }}</li>
-      <li>{{ attendee.guardianPhone }}</li>
-      <li>{{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
+      <li>Notes: {{ attendee.notes }}</li>
+      <li>Registrar: {{ attendee.registrar }}</li>
+      <li>Guardian Name: {{ attendee.guardianName }}</li>
+      <li>Email: {{ attendee.email }}</li>
+      <li>Address: {{ attendee.address }}</li>
+      <li>Phone: {{ attendee.guardianPhone }}</li>
+      <li>Emgcy Contact: {{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
      </ol>
     
   </div>
