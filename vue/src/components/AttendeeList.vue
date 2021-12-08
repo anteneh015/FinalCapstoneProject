@@ -13,8 +13,8 @@
         <option>Dora</option>
         <option>Mike</option>
       </select>
-      <label for="attendeeName">Attendee Name</label>
-      <input type="text" name="attendeeName" v-model="filter.attendeeName" />
+      <label for="attendeeName">Attendee Name</label> 
+      <input type="text" name="attendeeName" v-model.trim="filter.attendeeName"  />
       <label for="ageGroup">Age Group</label>
       <select id="ageGroup" v-model="filter.ageGroup">
         <option disabled value="">Please select one</option>
@@ -44,7 +44,7 @@ export default {
       filter: {
         paymentStatus: "",
         registrar: "",
-        atteneeName: "",
+        attendeeName: "",
         ageGroup: ""
       }
     };
@@ -57,37 +57,34 @@ export default {
       let filteredAttendees = this.$store.state.attendees;
       if (this.filter.paymentStatus != "") {
         filteredAttendees = filteredAttendees.filter((attendee) => {
-          attendee.paymentStatus.includes(this.filter.paymentStatus);
+         return attendee.paymentStatus == (this.filter.paymentStatus);
         });
       }
       if (this.filter.registrar != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => {
-          attendee.registrar.includes(this.filter.registrar);
+        filteredAttendees = filteredAttendees.filter((attendee) => { 
+         return attendee.registrar == (this.filter.registrar);
         });
       }
-      if (this.filter.atteneeName != "") {
+      if (this.filter.attendeeName != "") {
         filteredAttendees = filteredAttendees.filter((attendee) => {
-          attendee.atteneeName
+         return attendee.attendeeName
             .toLowerCase()
-            .includes(this.filter.attendeName.toLowerCase());
-        });
-      }
-      if (this.filter.atteneeName != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => {
-          attendee.atteneeName
-            .toLowerCase()
-            .includes(this.filter.attendeName.toLowerCase());
+            .includes(this.filter.attendeeName.toLowerCase());
         });
       }
       if (this.filter.ageGroup != "") {
         filteredAttendees = filteredAttendees.filter((attendee) => {
-          attendee.ageGroup.includes(this.filter.ageGroup);
+         return attendee.ageGroup == (this.filter.ageGroup);
         });
       }
       return filteredAttendees;
     }
   },
-
+  // methods:{
+  //   setAttendeeName(){
+  //     this.filter.attendeeName
+  //   }
+  // },
   created() {
     attendeeService
       .getAllAttendees()
