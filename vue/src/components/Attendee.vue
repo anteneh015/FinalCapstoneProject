@@ -38,7 +38,7 @@ export default {
 ol {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-right: 10px;
     vertical-align: top; 
     background-color: #DDD;

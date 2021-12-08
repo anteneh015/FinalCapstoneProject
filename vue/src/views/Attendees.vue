@@ -64,6 +64,7 @@ ol {
 }
 
 li {
+    flex-shrink: 1;
     list-style: none;
     background-color: rgb(255, 255, 255);
     font-size: .9rem;
