@@ -1,7 +1,7 @@
 <template>
   <div class="attendeeDetail">
       <h1>Detail for id {{ attendeeId}}</h1>
-
+    <!--- TODO: import attendee -->
 
   </div>
 </template>
