@@ -1,10 +1,17 @@
 <template>
   <div class="attendeeList">
+     <section for="payment"> Paymnet Status
+          <input type="checkbox" id="unpaid" name="payment" value="false" >
+          <label for="unpaid"> unpaid</label>
+          <input type="checkbox" id="paid" name="payment" value="true">
+          <label for="paid"> paid</label>
+        </section> 
   <attendee 
   v-for="attendee in attendees"
   v-bind:key="attendee.attendeeId"
   v-bind:attendee="attendee"
   />
+  
 
   </div>
 </template>
@@ -17,26 +24,42 @@ export default {
     name: 'attendee-list',
     data(){
         return{
-          errorMsg: ''  
+          errorMsg: '' 
+
         }
     },
     components: {
         Attendee
     },
     computed: {
+   
         attendees() {
             const attendees = this.$store.state.attendees;
-            const searchWord = this.$store.state.searchWord;
-            return attendees.filter( attendee => {
-              // if (attendees === 'All') {
+            //const searchWords = this.$store.state.searchWords;
+          //  return attendees;
+            return attendees.filter(attendee => {
+               return attendee.gender === 'Female';
+            })
+            //return attendees;
+          
 
-              // }
+           // if (searchWord === 'All') {
+            //    return attendees;
+           // }
+         //   if(searchWord === "Payment status"){
+         // return attendees.filter( attendee => {
+              
 
               
-              return attendees === 'All'? true : attendee.searchWord === searchWord;
-            })
-            
+              
+            // })
+         // } 
         }
+    },
+    methods:{
+      testfunction(){
+
+      } 
     },
     created() {
 
