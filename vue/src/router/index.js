@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Attendees from '../views/Attendees'
+import AttendeeDetail from '../views/AttendeeDetail'
 
 Vue.use(Router)
 
@@ -58,6 +59,14 @@ const router = new Router({
       path: "/attendees",
       name: "attendees",
       component: Attendees,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/:id",
+      name: "attendee",
+      component: AttendeeDetail,
       meta: {
         requiresAuth: true
       }

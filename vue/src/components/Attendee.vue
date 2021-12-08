@@ -21,7 +21,7 @@
       <li>Address: {{ attendee.address }}</li>
       <li>Phone: {{ attendee.guardianPhone }}</li>
       <li>Emgcy Contact: {{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
-      <button><router-link>Edit fdsakfljdsalfjsdlkjf</router-link></button>
+      <button><router-link :to ="{name: 'attendee', params:{id: attendee.attendeeId}}">Edit</router-link></button>
      </ol>
     
   </div>
