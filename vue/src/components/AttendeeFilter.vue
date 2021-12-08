@@ -13,12 +13,13 @@
   </div>
 </template>
 
-<script>
+ <script>
 export default {
     name:'attendee-filter',
     data() {
         return {
-            searchWord: this.$store.state.searchWord
+            searchWord: this.$store.state.searchWord,
+            paymentStatus: true,
         }
     },
     methods: {
