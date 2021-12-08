@@ -1,6 +1,6 @@
 <template>
   <div class="filter">
-      <div>
+     <!--   <div>
         <section for="payment"> Paymnet Status
           <input type="checkbox" id="unpaid" name="payment" value="false" v-on:click="testMethod">
           <label for="unpaid"> unpaid</label>
@@ -14,24 +14,10 @@
             v-on:change="setSearchWord">
               <option v-for="word in $store.state.searchWords" 
                 v-bind:key="word"
-                v-bind:value="word">{{ word }} 
-              <select>
-
-            </select>
-                    <!-- 
-                        1. user click sth, can be more than one,event
-                        2. handle it(searchwords[]), whenever click->push []
-                        3. in store [unpaid]
-                        {
-                            payment: true,
-                            registar: abc,
-                            name: name,
-                            group: 1,
-                        }
-                    -->
+                v-bind:value="word">{{ word }}   
                 </option>
           </select>
-      </div>
+      </div> -->
   </div>
 </template>
 
@@ -49,7 +35,7 @@ export default {
             this.$store.commit("SET_SEARCH_WORD", this.searchWord);
         },
         testMethod(event){
-            this.$store.commit("SET_PAYMENT_STATUS", event )
+            this.$store.commit("SET_PAYMENT_STATUS", event)
         }
     }
 }

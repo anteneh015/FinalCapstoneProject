@@ -10,7 +10,7 @@ public class Attendee {
     private LocalDate dateOfBirth;
     private String gender;
     private int ageGroup;
-    private boolean paymentStatus;
+    private String paymentStatus;
     private String notes;
     private String registrar;
     private String guardianName;
@@ -60,11 +60,11 @@ public class Attendee {
         this.ageGroup = ageGroup;
     }
 
-    public boolean isPaymentStatus() {
+    public String getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(boolean paymentStatus) {
+    public void setPaymentStatus(String paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
 
@@ -137,13 +137,7 @@ public class Attendee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendee attendee = (Attendee) o;
-        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && paymentStatus == attendee.paymentStatus
-                && Objects.equals(attendeeName, attendee.attendeeName) && Objects.equals(dateOfBirth, attendee.dateOfBirth)
-                && Objects.equals(gender, attendee.gender) && Objects.equals(notes, attendee.notes)
-                && Objects.equals(registrar, attendee.registrar) && Objects.equals(guardianName, attendee.guardianName)
-                && Objects.equals(email, attendee.email) && Objects.equals(address, attendee.address)
-                && Objects.equals(guardianPhone, attendee.guardianPhone) && Objects.equals(emgcyName, attendee.emgcyName)
-                && Objects.equals(emgcyPhone, attendee.emgcyPhone);
+        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && Objects.equals(attendeeName, attendee.attendeeName) && Objects.equals(dateOfBirth, attendee.dateOfBirth) && Objects.equals(gender, attendee.gender) && Objects.equals(paymentStatus, attendee.paymentStatus) && Objects.equals(notes, attendee.notes) && Objects.equals(registrar, attendee.registrar) && Objects.equals(guardianName, attendee.guardianName) && Objects.equals(email, attendee.email) && Objects.equals(address, attendee.address) && Objects.equals(guardianPhone, attendee.guardianPhone) && Objects.equals(emgcyName, attendee.emgcyName) && Objects.equals(emgcyPhone, attendee.emgcyPhone);
     }
 
     @Override

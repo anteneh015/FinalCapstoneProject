@@ -20,7 +20,7 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
     public void setup(){
         String sqlInsertParent = "INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, " +
                 "emergency_name, emergency_phone) VALUES (DEFAULT, 'Tese Name', 'rachelle123@gmail.com', " +
-                "'123 tech road, columbus, ohio, 43213', '614-111-2222', 'Eva', 'Rauh');";
+                "'123 tech road, columbus, ohio, 43213', '614-111-2222', 'Eva rauh', '614-111-2222');";
         DataSource dataSource = this.getDataSource();
         jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.update(sqlInsertParent, TEST_PARENT_ID);
@@ -42,13 +42,13 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
         attendee.setDateOfBirth(LocalDate.of(2014,8,23));
         attendee.setGender("male");
         attendee.setAgeGroup(2);
-        attendee.setPaymentStatus(true);
+        attendee.setPaymentStatus("paid");
         attendee.setNotes("nothing");
         attendee.setRegistrar("James");
 
         String sqlInsertAttendee = "INSERT INTO attendees VALUES (default, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING attendee_id";
         Integer attendeeID = jdbcTemplate.queryForObject(sqlInsertAttendee, Integer.class, TEST_PARENT_ID, 1, attendee.getAttendeeName(),
-                attendee.getDateOfBirth(), attendee.getGender(), attendee.getAgeGroup(), attendee.isPaymentStatus(),
+                attendee.getDateOfBirth(), attendee.getGender(), attendee.getAgeGroup(), attendee.getPaymentStatus(),
                 attendee.getNotes(), attendee.getRegistrar());
         attendee.setAttendeeId(attendeeID);
         return attendee;
