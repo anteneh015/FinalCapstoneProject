@@ -1,27 +1,35 @@
 <template>
   <div class="attendeeList">
-    <form>
-      <label for="payment">Payment Status</label>
+    <form id= "searchMenu">
+     <div id = "paymentOption">
+      <label for="payment">Payment Status: </label>
       <select id="payment" v-model="filter.paymentStatus">
         <option disabled value="">Please select one</option>
         <option>paid</option>
         <option>unpaid</option>
       </select>
-      <label for="registrar">Assigned Registrar</label>
+     </div>
+     <div id = "registrarOption">
+      <label for="registrar">Assigned Registrar: </label>
       <select id="registrar" v-model="filter.registrar">
         <option disabled value="">Please select one</option>
         <option>Dora</option>
         <option>Mike</option>
       </select>
-      <label for="attendeeName">Attendee Name</label> 
+     </div>
+     <div id= "nameOption">
+      <label for="attendeeName">Attendee Name: </label> 
       <input type="text" name="attendeeName" v-model.trim="filter.attendeeName"  />
-      <label for="ageGroup">Age Group</label>
+     </div>
+     <div id = "groupOption">
+      <label for="ageGroup">Age Group: </label>
       <select id="ageGroup" v-model="filter.ageGroup">
         <option disabled value="">Please select one</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
       </select>
+     </div>
     </form>
 
     <attendee
@@ -80,11 +88,7 @@ export default {
       return filteredAttendees;
     }
   },
-  // methods:{
-  //   setAttendeeName(){
-  //     this.filter.attendeeName
-  //   }
-  // },
+  
   created() {
     attendeeService
       .getAllAttendees()
@@ -114,4 +118,9 @@ export default {
 </script>
 
 <style>
+#searchMenu{
+  display: flex;
+  justify-content: space-around
+}
+
 </style>
