@@ -1,14 +1,15 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-    <div><router-link v-bind:to="{ name: 'attendees' }">Click here to see attendees</router-link></div>
-
-  </div>
+  <hello-world />
 </template>
 
 <script>
-export default {
-  name: "home"
-};
+  import HelloWorld from '../components/HelloWorld'
+
+  export default {
+    name: 'Home',
+
+    components: {
+      HelloWorld,
+    },
+  }
 </script>
