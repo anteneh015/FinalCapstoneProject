@@ -35,7 +35,17 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
 
        return attendees;
     }
-
+    @Override
+    public void updateAttendeeInfo(Attendee attendee){
+            String sql = "Update attendees SET attendee_name = ?, date_of_birth = ?, gender = ?, payment_status = ?, " +
+                    "notes = ?, registrar = ? WHERE attendee_id = ?";
+            jdbcTemplate.update(sql,attendee.getAttendeeName(),attendee.getDateOfBirth(),attendee.getGender(),attendee.getPaymentStatus(),
+                    attendee.getNotes(), attendee.getRegistrar(), attendee.getAttendeeId());
+            String guardianSql = "Update guardians SET email = ?, address = ?, guardian_phone = ?, emergency_name = ?, " +
+                "emergency_phone = ? WHERE guardian_name = ?";
+        jdbcTemplate.update(guardianSql,attendee.getEmail(),attendee.getAddress(),attendee.getGuardianPhone(),attendee.getEmgcyName(),
+                attendee.getEmgcyPhone(), attendee.getGuardianName());
+    }
     private Attendee mapRowToAttendee(SqlRowSet result) {
        Attendee attendee = new Attendee();
        attendee.setAttendeeId(result.getInt("attendee_id"));

@@ -2,11 +2,9 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.AttendeeDAO;
 import com.techelevator.model.Attendee;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -27,4 +25,12 @@ public class CampController {
         List<Attendee>  attendeesList = attendeeDAO.findALl();
         return attendeesList;
     }
+
+    @RequestMapping( path = "/attendees/{id}", method = RequestMethod.PUT)
+    public Attendee update(@PathVariable("id") int attendeeId, @RequestBody Attendee attendee){
+        attendeeDAO.updateAttendeeInfo(attendee);
+        return attendee;
+    }
+
+
 }
