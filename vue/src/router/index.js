@@ -64,7 +64,7 @@ const router = new Router({
       }
     },
     {
-      path: "/:id",
+      path: "/attendees/:id",
       name: "attendee",
       component: AttendeeDetail,
       meta: {
