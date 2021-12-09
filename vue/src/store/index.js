@@ -21,7 +21,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     campName: 'Java Blue Summer Camp',
-    attendees: []
+    attendees: [],
+    // changesMade :[],
+    // dorm1:[]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -43,6 +45,9 @@ export default new Vuex.Store({
     SET_ATTENDEES(state, attendees){
       state.attendees = attendees;
     },
+    // SET_CHANGES_MADE(state, changesMade) {
+		// 	state.changesMade.push(changesMade);
+		// },
     // SET_SEARCH_WORD(state, searchWord) {
       // state.searchWord = searchWord;
     // },
