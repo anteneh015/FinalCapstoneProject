@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     campName: 'Robotic Echo Summer Camp',
     attendees: [],
-    // changesMade :[],
+    editInfo :[],
     // dorm1:[]
   },
   mutations: {
@@ -45,9 +45,9 @@ export default new Vuex.Store({
     SET_ATTENDEES(state, attendees){
       state.attendees = attendees;
     },
-    // SET_CHANGES_MADE(state, changesMade) {
-		// 	state.changesMade.push(changesMade);
-		// },
+    UPDATE_ATTENDEE(state, editInfo) {
+			state.editInfo.push(editInfo);
+		},
     // SET_SEARCH_WORD(state, searchWord) {
       // state.searchWord = searchWord;
     // },
