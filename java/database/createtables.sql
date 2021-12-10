@@ -38,3 +38,10 @@ VALUES (DEFAULT, 1, 1, 'Andy Rauh', '2016-05-17', 'Male', 1, 'paid', 'nothing', 
 INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Hanna Smith', 'hanna123@gmail.com', '456 tech road, columbus, ohio, 43213', '614-789-2328', 'Eva Smith', '614-888-2428');
 INSERT INTO attendees (attendee_id, guardian_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
 VALUES (DEFAULT, 2, 1, 'Garcia Smith', '2010-07-15', 'Female', 2, 'unpaid', 'allergic to peanuts', 'Mike');
+
+INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'John William', 'john123@gmail.com', '222 tech road, columbus, ohio, 43213', '614-999-2222', 'April William', '614-111-3456');
+INSERT INTO attendees (attendee_id, guardian_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
+VALUES (DEFAULT, 3, 1, 'Tom William', '2015-07-22', 'Male', 1, 'unpaid', 'Love to play soccer', 'Mike');
+INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Vivian Brown ', 'Vivian123@gmail.com', '987 tech road, columbus, ohio, 43213', '614-091-2512', 'Taylor Lewis', '614-153-9026');
+INSERT INTO attendees (attendee_id, guardian_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
+VALUES (DEFAULT, 4, 1, 'Jack Brown', '2009-11-03', 'Male', 3, 'paid', 'allergic to kiwi', 'Mike');
