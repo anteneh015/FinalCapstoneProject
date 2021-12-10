@@ -28,7 +28,7 @@
        :rules="rules"
             counter="25"
             </template>-->
-      
+
   <v-card>
     <v-card-title class="headline blue lighten-2">Edit Attendee</v-card-title>
     <v-card-text>
@@ -36,31 +36,20 @@
         <v-row>
           <v-text-field
             v-model="attendee.attendeeName"
-           
-    
             label="Attendee Name"
           ></v-text-field
           >&nbsp;
           <v-text-field
             v-model="attendee.dateOfBirth"
-         
-          
             label="Date of Birth"
           ></v-text-field>
         </v-row>
 
         <v-row>
-          <v-text-field
-            v-model="attendee.gender"
-           
-          
-            label="Gender"
-          ></v-text-field
+          <v-text-field v-model="attendee.gender" label="Gender"></v-text-field
           >&nbsp;
           <v-text-field
             v-model="attendee.ageGroup"
-         
-       
             label="Age Group"
           ></v-text-field>
         </v-row>
@@ -68,23 +57,17 @@
         <v-row>
           <v-text-field
             v-model="attendee.registrar"
-          
-         
             label="Registrar"
           ></v-text-field
           >&nbsp;
           <v-text-field
             v-if="attendee.paymentStatus"
             v-model="paid"
-           
-    
             label="Payment Status"
           ></v-text-field>
           <v-text-field
             v-if="!attendee.paymentStatus"
             v-model="unpaid"
-            
-        
             label="Payment Status"
           ></v-text-field>
         </v-row>
@@ -92,33 +75,22 @@
         <v-row>
           <v-text-field
             v-model="attendee.guardianName"
-            
-     
             label="Guardian Name"
           ></v-text-field
           >&nbsp;
           <v-text-field
             v-model="attendee.guardianPhone"
-          
-        
             label="Guardian Phone"
           ></v-text-field>
         </v-row>
 
         <v-row>
-          <v-text-field
-            v-model="attendee.email"
-            
-     
-            label="Email"
-          ></v-text-field>
+          <v-text-field v-model="attendee.email" label="Email"></v-text-field>
         </v-row>
 
         <v-row>
           <v-text-field
             v-model="attendee.address"
-           
-        
             label="Address"
           ></v-text-field>
         </v-row>
@@ -127,30 +99,22 @@
           &nbsp;
           <v-text-field
             v-model="attendee.emgcyName"
-          
-      
             label="Emgcy Name"
           ></v-text-field
           >&nbsp;
           <v-text-field
             v-model="attendee.emgcyPhone"
-            
-      
             label="Emgcy Phone"
           ></v-text-field>
         </v-row>
 
         <v-row>
-          <v-text-field
-            v-model="attendee.notes"
-            
-           
-            label="Notes"
-          ></v-text-field>
+          <v-text-field v-model="attendee.notes" label="Notes"></v-text-field>
         </v-row>
 
         <v-row justify="center">
           <v-btn class="success my-4" @click="submit">SUBMIT</v-btn>
+          &nbsp;<v-btn class="success my-4" @click="cancel">CANCEL</v-btn>
         </v-row>
       </v-form>
     </v-card-text>
@@ -160,7 +124,6 @@
 </template>
 
 <script>
-
 import attendeeService from "@/services/AttendeeService";
 
 export default {
@@ -169,6 +132,7 @@ export default {
       id: 0,
       paid: "Paid",
       unpaid: "Unpaid",
+      errorMsg: ''
       // oldAttendee: "",
       // newAttendee: "",
       // editInfo: [
@@ -190,7 +154,6 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-    
   },
   computed: {
     attendee() {
@@ -201,30 +164,55 @@ export default {
     },
   },
   methods: {
-  //   changeHandler(index, propertyName, event) {
-  //     let propertyToBeChanged = this.editInfo[index];
-  //     propertyToBeChanged[propertyName] = event;
-  //   },
+    //   changeHandler(index, propertyName, event) {
+    //     let propertyToBeChanged = this.editInfo[index];
+    //     propertyToBeChanged[propertyName] = event;
+    //   },
     paidOrUnpaid() {
-      if (this.newAttendee.paymentStatus === 'paid') {
+      if (this.newAttendee.paymentStatus === "paid") {
         return "Paid";
       } else {
         return "Unpaid";
       }
-   },
-   submit() {
-     
-      // Submit this editedCamper to the API using a PUT
-      attendeeService.updateAttendee(this.attendee);
-      //commit to store
-      this.$store.commit("UPDATE_ATTENDEE", this.attendee);
-      //
-
-      //take the page back to /attendees
+    },
+    cancel() {
       this.$router.push({
-        name: 'attendees'
-      })
-   },
+        name: "attendees",
+      });
+    },
+    submit() {
+      // Submit this editedCamper to the API using a PUT
+      attendeeService
+        .updateAttendee(this.attendee)
+        .then((response) => {
+          if (response.status === 200) {
+            alert("Your update was successful");
+            this.$store.commit("UPDATE_ATTENDEE", this.attendee);
+          }
+        })
+        .catch((error) => {
+          // TODO: Inform the user there was an error
+          if (error.response) {
+            this.errorMsg =
+              "Error creating new board " +
+              error.response.status +
+              " " +
+              error.response.statusText;
+          }
+          // Handle connection errors
+          else if (error.request) {
+            this.errorMsg = "Error connecting to Server";
+          }
+          // Handle JS runtime errors
+          else {
+            this.errorMsg = "Some JavaScript error occurred";
+          }
+        });
+
+      this.$router.push({
+        name: "attendees",
+      });
+    },
   },
 };
 </script>
