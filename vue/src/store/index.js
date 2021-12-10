@@ -20,7 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    campName: 'Java Blue Summer Camp',
+    campName: 'Robotic Echo Summer Camp',
     attendees: [],
     // changesMade :[],
     // dorm1:[]
