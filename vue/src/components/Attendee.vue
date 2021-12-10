@@ -1,60 +1,108 @@
 <template>
   <div class="attendee">
-   
-    <ol class="cards">
-      
-      <li>ID: {{ attendee.attendeeId }}</li>
-      <li>Name: {{ attendee.attendeeName }}</li>
-      <li>DOB: {{ attendee.dateOfBirth }}</li>
-      <li>Gender: {{ attendee.gender }}</li>
-      <li>Group: {{ attendee.ageGroup }}</li>
-      <li>
-         <div class="labels">
-              <span class="paymentStatus"></span>
+    <v-container fluid class="my-10 mx-16">
+      <v-row no-gutters>
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Name</div>
+          <div>{{ attendee.attendeeName }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Date Of Birth</div>
+          <div>{{ attendee.dateOfBirth }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Gender</div>
+          <div>{{ attendee.gender }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Age Group</div>
+          <div>{{ attendee.ageGroup }}</div>
+        </v-col>
+
+        <v-col cols="2" sm="4" md="1">
+          <div class="caption blue--text">Payment Status</div>
+          <div class="right">
+            <v-chip
+              small
+              :color="`${
+                attendee.paymentStatus == 'paid' ? '#9A031E' : '#61A5c2'}`"
+              class="white--text caption my-2"
+              >{{ attendee.paymentStatus == 'unpaid' ? "Paid" : "Unpaid" }}
+            </v-chip>
           </div>
-          Pay Status: {{ attendee.paymentStatus }}
-      </li>
-      <li>Notes: {{ attendee.notes }}</li>
-      <li>Registrar: {{ attendee.registrar }}</li>
-      <li>Guardian Name: {{ attendee.guardianName }}</li>
-      <li>Email: {{ attendee.email }}</li>
-      <li>Address: {{ attendee.address }}</li>
-      <li>Phone: {{ attendee.guardianPhone }}</li>
-      <li>Emgcy Contact: {{ attendee.emgcyName }}  {{ attendee.emgcyPhone }}</li>
-      <button><router-link :to ="{ name: 'attendee', params:{id: attendee.attendeeId}}">Edit</router-link></button>
-     </ol>
-    
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Registrar</div>
+          <div>{{ attendee.registrar }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Guardian Name</div>
+          <div>{{ attendee.guardianName }}</div>
+        </v-col>
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Phone Number</div>
+          <div>{{ attendee.guardianPhone }}</div>
+        </v-col>
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Email</div>
+          <div>{{ attendee.email }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Address</div>
+          <div>{{ attendee.address }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Emgcy Name</div>
+          <div>{{ attendee.emgcyName }}</div>
+        </v-col>
+
+          <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Emgcy Phone</div>
+          <div>{{ attendee.emgcyPhone }}</div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Notes</div>
+          <p>
+            <span v-if="!attendee.notes" class="body-2"
+              >No notes added</span
+            >
+            <span class="body-2">{{ attendee.notes }}</span>
+          </p>
+        </v-col>
+        <!-- <v-col cols="12" sm="4" md="1">
+          <Popup
+            :camper="camper"
+            @camperEdited="snackbar = true"
+            @camperUpdated="camperUpdated = true"
+          />
+        </v-col> -->
+         <v-col cols="12" sm="4" md="1">
+           <router-link :to ="{ name: 'attendee', params:{id: attendee.attendeeId}}">Edit</router-link>
+         </v-col>
+      </v-row>
+      <v-divider></v-divider>
+    </v-container>
   </div>
 </template>
 
 <script>
+//import Popup from "@/components/Popup.vue";
 export default {
-    name: 'attendee',
-    props: ['attendee']
-    
-
-}
+  name: "attendee",
+  props: ["attendee"],
+  // components: {
+  //   Popup
+  // },
+};
 </script>
 
 <style>
-ol {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-right: 10px;
-    vertical-align: top; 
-    background-color: #DDD;
-    border-radius: 2px 3px;
-}
-
-li {
-    list-style: none;
-    background-color: rgb(255, 255, 255);
-    font-size: .9rem;
-    border-radius: 1px;
-    margin-bottom: 10px;
-    padding: 8px;
-    white-space: normal;
-}
-
 </style>
