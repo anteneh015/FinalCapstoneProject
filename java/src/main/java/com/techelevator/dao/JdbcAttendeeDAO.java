@@ -36,7 +36,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
        return attendees;
     }
     @Override
-    public void updateAttendeeInfo(Attendee attendee){
+    public Attendee updateAttendeeInfo(Attendee attendee){
             String sql = "Update attendees SET attendee_name = ?, date_of_birth = ?, gender = ?, payment_status = ?, " +
                     "notes = ?, registrar = ? WHERE attendee_id = ?";
             jdbcTemplate.update(sql,attendee.getAttendeeName(),attendee.getDateOfBirth(),attendee.getGender(),attendee.getPaymentStatus(),
@@ -45,6 +45,27 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
                 "emergency_phone = ? WHERE guardian_name = ?";
         jdbcTemplate.update(guardianSql,attendee.getEmail(),attendee.getAddress(),attendee.getGuardianPhone(),attendee.getEmgcyName(),
                 attendee.getEmgcyPhone(), attendee.getGuardianName());
+
+        Attendee newAttendee = null;
+
+        String newSql = "SELECT attendee_name, date_of_birth, gender " +
+                "age_group, payment_status, notes, registrar WHERE attendee_id = ?";
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(newSql, attendee.getAttendeeId());
+        while (rows.next()) {
+            attendee = new Attendee();
+            attendee.setAttendeeId(attendee.getAttendeeId());
+            attendee.setAttendeeName(rows.getString("attendee_name"));
+            attendee.setDateOfBirth(rows.getDate("date_of_birth").toLocalDate());
+            attendee.setGender(rows.getString("gender"));
+            attendee.setAgeGroup(rows.getInt("age_group"));
+            attendee.setPaymentStatus(rows.getString("payment_status"));
+            attendee.setNotes(rows.getString("notes"));
+            attendee.setRegistrar(rows.getString("registrar"));
+
+
+        }
+        return attendee;
+
     }
     private Attendee mapRowToAttendee(SqlRowSet result) {
        Attendee attendee = new Attendee();
@@ -67,5 +88,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
 
        return attendee;
     }
+
 }
+
 
