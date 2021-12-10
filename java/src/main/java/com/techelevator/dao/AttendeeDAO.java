@@ -7,6 +7,6 @@ import java.util.List;
 public interface AttendeeDAO {
 
     List<Attendee> findALl();
-    public void updateAttendeeInfo(Attendee attendee);
+    public Attendee updateAttendeeInfo(Attendee attendee);
 
 }
