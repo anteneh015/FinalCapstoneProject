@@ -6,7 +6,7 @@ export default {
     },
 
     updateAttendee(attendee){
-        return axios.put(`/attendees/${attendee.id}`, attendee);
+        return axios.put(`/attendees/${attendee.attendeeId}`, attendee);
     }
 
 

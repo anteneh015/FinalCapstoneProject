@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+
 Vue.use(Vuex)
 
 /*
@@ -22,7 +23,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     campName: 'Robotic Echo Summer Camp',
     attendees: [],
-    editInfo :[],
+    //editInfo :[],
     // dorm1:[]
   },
   mutations: {
@@ -45,12 +46,12 @@ export default new Vuex.Store({
     SET_ATTENDEES(state, attendees){
       state.attendees = attendees;
     },
-    UPDATE_ATTENDEE(state, editInfo) {
-			state.editInfo.push(editInfo);
+    UPDATE_ATTENDEE(state, updateAttendee) {
+     const attendeeArr = state.attendees.filter(attendee =>{
+        return attendee.attendeeId === updateAttendee.attendeeId
+      }); 
+      attendeeArr[0] = updateAttendee;
 		},
-    // SET_SEARCH_WORD(state, searchWord) {
-      // state.searchWord = searchWord;
-    // },
    
   }
 })
