@@ -110,7 +110,7 @@ export default {
          {
           icon: "mdi-account-switch",
           text: "Dorm Assignment",
-          route: "/dormassignments",
+          route: "/dormAssignments",
           role: "ROLE_USER"
         },
         // {
