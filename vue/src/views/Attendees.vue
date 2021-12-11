@@ -16,11 +16,11 @@ export default {
   components: {
     AttendeeList,
   },
-  computed: {
-    showAttendees() {
-      return this.$store.state.attendees;
-    },
-  },
+  // computed: {
+  //   showAttendees() {
+  //     return this.$store.state.attendees;
+  //   },
+  //},
 };
 </script>
 
