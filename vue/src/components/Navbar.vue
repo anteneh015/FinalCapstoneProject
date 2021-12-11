@@ -6,7 +6,17 @@
         class="grey--text"
         @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
+       <v-avatar size="50">
+          <v-img
+        class="mx-2"
+        src="/logocrop.jpg"
+        max-height="50"
+        max-width="50"
+        contain
+      ></v-img>
+      </v-avatar>
       <v-toolbar-title class="text-uppercase grey--text">
+     
         <span>Robotic Echo</span>
         <span class="font-weight-light">&nbsp;Portal</span>
       </v-toolbar-title>
@@ -97,12 +107,12 @@ export default {
         //   route: "/upload",
         //   role: ""
         // },
-        // {
-        //   icon: "mdi-account-switch",
-        //   text: "Assign Dorms",
-        //   route: "/dormassignments",
-        //   role: ""
-        // },
+         {
+          icon: "mdi-account-switch",
+          text: "Dorm Assignment",
+          route: "/dormassignments",
+          role: "ROLE_USER"
+        },
         // {
         //   icon: "mdi-email",
         //   text: "Send Emails",
