@@ -1,6 +1,6 @@
 <template>
   <!-- v-app is our root Vuetify component. It MUST be our root component -->
-  <v-app>
+  <v-app class="app"> 
     <!-- v-app-bar is a nav-toolbar.  It is a vuetify component much like the components we create.
     This not only comes with pre-defined HTML but baked in functionality. We can see we pass the prop 'dark' here.
     If we were to change 'dark' to 'light' we would change the color scheme of the toolbar-->
@@ -39,11 +39,25 @@ export default {
 </script>
 
 <style scoped>
+#app {
+  background: url('./assets/19449741.jpg')
+    no-repeat center center fixed !important;
+  background-size: cover;
+}
+/* body {
+
+}
 html {
   background-color: #000;
+    min-height: 100%;
+    background-attachment: fixed;
+    background-image: url("./assets/19449741.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .homepage {
-  background-color: #297292;
-}
+  background-color: #297292; 
+}*/
 </style>

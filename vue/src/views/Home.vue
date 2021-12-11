@@ -12,3 +12,13 @@ export default {
   name: "home"
 };
 </script>
+<style scoped>
+body {
+    min-height: 100%;
+    position: relative;
+    background-image: url("/public/19449741.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
