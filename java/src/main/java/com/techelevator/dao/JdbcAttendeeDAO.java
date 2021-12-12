@@ -21,7 +21,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
     @Override
     public List<Attendee> findALl() {
         List<Attendee> attendees = new ArrayList<>();
-        String sql = "SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, " +
+        String sql = "SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, attendees.imgURL " +
                 "guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, guardians.emergency_phone, dorm_name From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id " +
                 "JOIN dorms ON attendees.dorm_id = dorms.dorm_id ";
 
@@ -36,9 +36,9 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
     @Override
     public Attendee updateAttendeeInfo(Attendee attendee){
             String sql = "Update attendees SET attendee_name = ?, date_of_birth = ?, gender = ?, payment_status = ?, " +
-                    "notes = ?, registrar = ? WHERE attendee_id = ?";
+                    "notes = ?, registrar = ?, img_url = ? WHERE attendee_id = ?";
             jdbcTemplate.update(sql,attendee.getAttendeeName(),attendee.getDateOfBirth(),attendee.getGender(),attendee.getPaymentStatus(),
-                    attendee.getNotes(), attendee.getRegistrar(), attendee.getAttendeeId());
+                    attendee.getNotes(), attendee.getRegistrar(), attendee.getAttendeeId(), attendee.getImgURL());
             String guardianSql = "Update guardians SET email = ?, address = ?, guardian_phone = ?, emergency_name = ?, " +
                 "emergency_phone = ? WHERE guardian_name = ?";
             jdbcTemplate.update(guardianSql,attendee.getEmail(),attendee.getAddress(),attendee.getGuardianPhone(),attendee.getEmgcyName(),
@@ -86,6 +86,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
        attendee.setGuardianPhone(result.getString("guardian_phone"));
        attendee.setEmgcyName(result.getString("emergency_name"));
        attendee.setEmgcyPhone(result.getString("emergency_phone"));
+       attendee.setImgURL(result.getString("img_url"));
        attendee.setDormName(result.getString("dorm_name"));
        //attendee.setDormId(result.getInt("dorm_id"));
 
