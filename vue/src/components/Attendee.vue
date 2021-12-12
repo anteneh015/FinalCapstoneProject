@@ -106,5 +106,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.attendee {
+  border: cornflowerblue;
+  border-radius: 10px;
+}
 </style>

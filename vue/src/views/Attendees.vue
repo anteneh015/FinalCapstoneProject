@@ -28,8 +28,5 @@ export default {
 h1 {
   align-self: center;
 }
-.list {
-  border: cornflowerblue;
-  border-radius: 10px;
-}
+
 </style>
