@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import attendeeService from "@/services/AttendeeService";
+
 import Attendee from "@/components/Attendee.vue";
 
 export default {
@@ -87,32 +87,6 @@ export default {
       }
       return filteredAttendees;
     }
-  },
-  
-  created() {
-    attendeeService
-      .getAllAttendees()
-      .then((response) => {
-        this.$store.commit("SET_ATTENDEES", response.data);
-      })
-      .catch((error) => {
-        // TODO: Inform the user there was an error
-        if (error.response) {
-          this.errorMsg =
-            "Error creating new board " +
-            error.response.status +
-            " " +
-            error.response.statusText;
-        }
-        // Handle connection errors
-        else if (error.request) {
-          this.errorMsg = "Error connecting to Server";
-        }
-        // Handle JS runtime errors
-        else {
-          this.errorMsg = "Some JavaScript error occurred";
-        }
-      });
   },
 };
 </script>

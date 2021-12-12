@@ -23,8 +23,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     campName: 'Robotic Echo Summer Camp',
     attendees: [],
-    //editInfo :[],
-    // dorm1:[]
+    //dorm1:[]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -51,7 +50,14 @@ export default new Vuex.Store({
         return attendee.attendeeId === updateAttendee.attendeeId
       }); 
       attendeeArr[0] = updateAttendee;
-		},
+    },
+    // SET_DORM(state, { attendee, dormID }) {
+		// 	console.log(camper);
+		// 	console.log(dormID);
+		// 	if (dormID == 1) {
+		// 		state.dorm1.push(camper);
+		// 	}
+		// },
    
   }
 })

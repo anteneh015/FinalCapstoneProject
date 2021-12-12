@@ -1,87 +1,33 @@
-<template v-slot:activator="{ on: editsCamper }">
-  <!-- <div class="attendeeDetail">
-    <v-dialog v-model="dialog" width="700" :camper="camper"> 
-      <template v-slot:activator="{ on: editsCamper }">
-        <v-btn
-          text
-          color="red lighten-2"
-          dark
-          small
-          v-on="editsCamper"
-          @click="editCamper(camper)"
-          >Edit Camper</v-btn
-        >
-                v-on:change="(event) => changeHandler(0, 'attendeeName', event)"
-                  v-on:change="(event) => changeHandler(1, 'dateOfBirth', event)"
-                    v-on:change="(event) => changeHandler(2, 'gender', event)"
-                         v-on:change="(event) => changeHandler(3, 'ageGroup', event)"
-                            v-on:change="(event) => changeHandler(4, 'registrar', event)"
-                                    v-on:change="(event) => changeHandler(5, 'paymentStatus', event)"
-                                        v-on:change="(event) => changeHandler(5, 'paymentStatus', event)"
-                                               v-on:change="(event) => changeHandler(6, 'guardianName', event)"
-                                                   v-on:change="(event) => changeHandler(7, 'guardianPhone', event)"
-                                                          v-on:change="(event) => changeHandler(8, 'email', event)"
-                                                              v-on:change="(event) => changeHandler(9, 'address', event)"
-                                                                    v-on:change="(event) => changeHandler(10, 'emgcyName', event)"
-                                                                          v-on:change="(event) => changeHandler(11, 'emgcyPhone', event)"
-                                                                           v-on:change="(event) => changeHandler(12, 'notes', event)"
-       :rules="rules"
-            counter="25"
-            </template>-->
+<template>
 
   <v-card>
+    <!-- <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+      <span class="font-weight-bold">Edit successfully</span>
+      <v-btn class="mx-4" text color="white" @click="snackbar=false">Exit</v-btn>
+    </v-snackbar> -->
+
     <v-card-title class="headline blue lighten-2">Edit Attendee</v-card-title>
+
     <v-card-text>
-      <v-form class="px-3">
+      <v-form class="px-3" >
         <v-row>
-          <v-text-field
-            v-model="attendee.attendeeName"
-            label="Attendee Name"
-          ></v-text-field
-          >&nbsp;
-          <v-text-field
-            v-model="attendee.dateOfBirth"
-            label="Date of Birth"
-          ></v-text-field>
+          <v-text-field v-model="attendee.attendeeName" label="Attendee Name"></v-text-field>&nbsp;
+          <v-text-field v-model="attendee.dateOfBirth" label="Date of Birth"></v-text-field></v-row>
+
+        <v-row>
+          <v-text-field v-model="attendee.gender" label="Gender"></v-text-field>&nbsp;
+          <v-text-field v-model="attendee.ageGroup" label="Age Group"></v-text-field>
         </v-row>
 
         <v-row>
-          <v-text-field v-model="attendee.gender" label="Gender"></v-text-field
-          >&nbsp;
-          <v-text-field
-            v-model="attendee.ageGroup"
-            label="Age Group"
-          ></v-text-field>
+          <v-text-field v-model="attendee.registrar" label="Registrar"></v-text-field>&nbsp;
+          <v-text-field v-if="attendee.paymentStatus" v-model="paid" label="Payment Status"></v-text-field>
+          <v-text-field v-if="!attendee.paymentStatus" v-model="unpaid" label="Payment Status"></v-text-field>
         </v-row>
 
         <v-row>
-          <v-text-field
-            v-model="attendee.registrar"
-            label="Registrar"
-          ></v-text-field
-          >&nbsp;
-          <v-text-field
-            v-if="attendee.paymentStatus"
-            v-model="paid"
-            label="Payment Status"
-          ></v-text-field>
-          <v-text-field
-            v-if="!attendee.paymentStatus"
-            v-model="unpaid"
-            label="Payment Status"
-          ></v-text-field>
-        </v-row>
-
-        <v-row>
-          <v-text-field
-            v-model="attendee.guardianName"
-            label="Guardian Name"
-          ></v-text-field
-          >&nbsp;
-          <v-text-field
-            v-model="attendee.guardianPhone"
-            label="Guardian Phone"
-          ></v-text-field>
+          <v-text-field v-model="attendee.guardianName" label="Guardian Name"></v-text-field>&nbsp;
+          <v-text-field v-model="attendee.guardianPhone" label="Guardian Phone"></v-text-field>
         </v-row>
 
         <v-row>
@@ -89,23 +35,12 @@
         </v-row>
 
         <v-row>
-          <v-text-field
-            v-model="attendee.address"
-            label="Address"
-          ></v-text-field>
+          <v-text-field v-model="attendee.address" label="Address"></v-text-field>
         </v-row>
 
         <v-row>
-          &nbsp;
-          <v-text-field
-            v-model="attendee.emgcyName"
-            label="Emgcy Name"
-          ></v-text-field
-          >&nbsp;
-          <v-text-field
-            v-model="attendee.emgcyPhone"
-            label="Emgcy Phone"
-          ></v-text-field>
+          <v-text-field v-model="attendee.emgcyName" label="Emgcy Name"></v-text-field>&nbsp;
+          <v-text-field v-model="attendee.emgcyPhone" label="Emgcy Phone"></v-text-field>
         </v-row>
 
         <v-row>
@@ -113,14 +48,14 @@
         </v-row>
 
         <v-row justify="center">
-          <v-btn class="success my-4" @click="submit">SUBMIT</v-btn>
-          &nbsp;<v-btn class="success my-4" @click="cancel">CANCEL</v-btn>
+          <v-btn class="success mx-4" @click="submit">SUBMIT</v-btn>&nbsp;
+          <v-btn class="blue mx-4" @click="cancel">CANCEL</v-btn>
         </v-row>
+
       </v-form>
     </v-card-text>
+
   </v-card>
-  <!-- </v-dialog>
-  </div> -->
 </template>
 
 <script>
@@ -133,23 +68,6 @@ export default {
       paid: "Paid",
       unpaid: "Unpaid",
       errorMsg: ''
-      // oldAttendee: "",
-      // newAttendee: "",
-      // editInfo: [
-      //   { attendeeName: "" },
-      //   { dateOfBirth: "" },
-      //   { gender: "" },
-      //   { ageGroup: "" },
-      //   { registrar: "" },
-      //   { paymentStatus: "" },
-      //   { guardianName: "" },
-      //   { guardianPhone: "" },
-      //   { email: "" },
-      //   { address: "" },
-      //   { emgcyName: "" },
-      //   { emgcyPhone: "" },
-      //   { notes: "" },
-      // ],
     };
   },
   created() {
@@ -164,10 +82,6 @@ export default {
     },
   },
   methods: {
-    //   changeHandler(index, propertyName, event) {
-    //     let propertyToBeChanged = this.editInfo[index];
-    //     propertyToBeChanged[propertyName] = event;
-    //   },
     paidOrUnpaid() {
       if (this.newAttendee.paymentStatus === "paid") {
         return "Paid";
@@ -181,7 +95,6 @@ export default {
       });
     },
     submit() {
-      // Submit this editedCamper to the API using a PUT
       attendeeService
         .updateAttendee(this.attendee)
         .then((response) => {
@@ -191,7 +104,6 @@ export default {
           }
         })
         .catch((error) => {
-          // TODO: Inform the user there was an error
           if (error.response) {
             this.errorMsg =
               "Error creating new board " +
@@ -199,20 +111,24 @@ export default {
               " " +
               error.response.statusText;
           }
-          // Handle connection errors
           else if (error.request) {
             this.errorMsg = "Error connecting to Server";
           }
-          // Handle JS runtime errors
           else {
             this.errorMsg = "Some JavaScript error occurred";
           }
         });
-
       this.$router.push({
         name: "attendees",
       });
     },
+    // snackbarSubmit() {
+    //   this.snackbar = true;
+    //   setTimeout(() => {
+    //     this.snackbar = false;
+    //     this.$router.push({ name: "attendees" });
+    //   }, 4000);
+    // },
   },
 };
 </script>
