@@ -30,7 +30,7 @@
     <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
     <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
     <div class="walle">
-      <v-img src="walle.jpg" max-width="120"></v-img>
+      <v-img src="wall-e.png" max-width="120"></v-img>
     </div>
     <div class="eve">
       <v-img src="EVE.png" max-width="120"></v-img>
@@ -161,7 +161,7 @@ export default {
 }
 
 .eve {
-  transform: translate(93%, -580%);
+  transform: translate(90%, -580%);
 }
 
 .submitButton {
@@ -199,18 +199,18 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-15%, -85%);
+  transform: translate(-15%, -77%);
   border-radius: 10px;
 }
 
 .dormCard {
   border-radius: 10px;
-  padding: 5px 5px 5px 5px;
+  padding: 2px 2px 2px 2px;
   background: rgb(243, 243, 243);
   box-shadow: 0 0 0 2pt #346a82;
-
+  height: 50%;
   cursor: pointer;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .dorm1 {

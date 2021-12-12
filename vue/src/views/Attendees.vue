@@ -2,7 +2,7 @@
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
    
-    <main>
+    <main class="list">
       <attendee-list />
     </main>
   </div>
@@ -27,5 +27,9 @@ export default {
 
 h1 {
   align-self: center;
+}
+.list {
+  border: cornflowerblue;
+  border-radius: 10px;
 }
 </style>
