@@ -11,7 +11,7 @@
     <v-card-text>
       <v-form class="px-3" >
         <v-row>
-        <imag />
+        <img />
         </v-row>
 
         <v-row>
@@ -52,6 +52,15 @@
           <v-text-field v-model="attendee.notes" label="Notes"></v-text-field>
         </v-row>
 
+         <v-row justify="center">
+        
+          <v-file-input v-model="file" label="Load Attendee Picture Here" accept=".jpg"></v-file-input>&nbsp;
+          <v-btn color="primary" @click="submitFile()">Upload Image</v-btn>
+        
+      </v-row>
+
+      
+
         <v-row justify="center">
           <v-btn class="success mx-4" @click="submit">SUBMIT</v-btn>&nbsp;
           <v-btn class="blue mx-4" @click="cancel">CANCEL</v-btn>
@@ -64,7 +73,22 @@
 </template>
 
 <script>
-import attendeeService from "@/services/AttendeeService";
+ import attendeeService from "@/services/AttendeeService";
+
+// import { initializeApp } from "firebase/app";
+// import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
+
+// const firebaseConfig = {
+// apiKey: "AIzaSyDxqaJhYgSwVa23CFLTK547oKV0JHjA4s8",
+// authDomain: "robotic-echo-portal.firebaseapp.com",
+// projectId: "robotic-echo-portal",
+// storageBucket: "robotic-echo-portal.appspot.com",
+// messagingSenderId: "607406800952",
+// appId: "1:607406800952:web:98c4ff5033790aacdaa6cd",
+// measurementId: "G-NJ73GLB58Z"
+// };
+// const app = initializeApp(firebaseConfig);
+// const storage = getStorage(app);
 
 export default {
   data() {
