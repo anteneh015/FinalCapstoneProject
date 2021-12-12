@@ -86,31 +86,23 @@
         </v-col> -->
          <v-col cols="12" sm="4" md="1">
             <div class="text-center">
-    <v-chip
-      class="ma-2"
-      color="#61A5c2"
-      text-color="black"
-    >
-      <router-link :to ="{ name: 'attendee', params:{id: attendee.attendeeId}}">Details</router-link>
-    </v-chip>
-     </div>
-           
-           
+               <v-chip class="ma-2" color="#61A5c2" text-color="black">
+                <router-link :to ="{ name: 'attendee', params:{id: attendee.attendeeId}}">Details</router-link>
+              </v-chip>
+            </div>
          </v-col>
-      </v-row>
+        </v-row>
+
       <v-divider></v-divider>
     </v-container>
   </div>
 </template>
 
 <script>
-//import Popup from "@/components/Popup.vue";
+
 export default {
   name: "attendee",
   props: ["attendee"],
-  // components: {
-  //   Popup
-  // },
 };
 </script>
 

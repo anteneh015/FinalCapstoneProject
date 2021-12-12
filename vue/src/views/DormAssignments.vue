@@ -1,19 +1,14 @@
 <template>
   <div class="dormContainer">
-    {{attendees}}
+
     <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
       <span class="font-weight-bold">Attendees Successfully Assigned!</span>
-      <v-btn class="mx-4" text color="white" @click="snackbar=false">Close</v-btn>
+      <v-btn class="mx-4" text color="white" @click="snackbar=false">Exit</v-btn>
     </v-snackbar>
 
-
     <span class="text-uppercase grey--text text-h4 dormTitle">Dorm Assignment</span>
-
-    <!-- background image 
-    <img src="/dorm-page-background.png" style="width:100%;" class="dormImage" />-->
-
-
-    <DormBoard id="board-0" class="dormAttendees board" @attendeeDropped="change">
+    <img src="/rocket.jpg" style="width:125%;" class="dormImage" />
+    <DormBoard id="board-0" class="dormCampers board" @camperDropped="change">
       <CamperCard
         :id="`${attendee.attendeeId}`"
         class="dormCard"
@@ -21,26 +16,24 @@
         :key="attendee.attendeeId"
         draggable="true"
       >
-        <p class="text-button dormAttendeeName">{{attendee.attendeeName}}</p>
+        <p class="text-button dormCamperName">{{attendee.attendeeName}} </p>
       </CamperCard>
     </DormBoard>
-
-    
     <div class="dormName1">
-      <span class="text-uppercase grey--text text-h4">DeAmber</span>
+      <span class="text-uppercase grey--text text-h4">Wall-E</span>
     </div>
     <div class="dormName2">
-      <span class="text-uppercase grey--text text-h4">Anteneh</span>
+      <span class="text-uppercase grey--text text-h4">Eve</span>
     </div>
     <v-btn color="success" class="dormButton" @click="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
 
-    <DormBoard id="board-1" class="dorm1 board" @attendeeDropped="change"></DormBoard>
-    <DormBoard id="board-2" class="dorm2 board" @attendeeDropped="change"></DormBoard>
-    <div class="otterspace">
-      <v-img src="src\assets\cute-robot-face-icon-vector.jpg" max-width="150"></v-img>
+    <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
+    <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
+    <div class="walle">
+      <v-img src="walle.jpg" max-width="120"></v-img>
     </div>
-    <div class="aquaotter">
-      <v-img src="src\assets\cute-robot-face-icon-vector.jpg" max-width="120"></v-img>
+    <div class="eve">
+      <v-img src="EVE.png" max-width="120"></v-img>
     </div>
   </div>
 </template>
@@ -52,7 +45,6 @@ import CamperCard from "@/components/CamperCard.vue";
 export default {
   data() {
     return {
-      attendees: [],
       dorm1: [],
       dorm2: [],
       dorm3: [],
@@ -81,68 +73,68 @@ export default {
     filteredDorm(card_id, board_id) {
       if (board_id == "board-0") {
         for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].attendeeId == card_id) {
+          if (this.dorm1[i].camperID == card_id) {
             this.dorm1.splice(i, 1);
           }
         }
         for (let i = 0; i < this.dorm2.length; i++) {
-          if (this.dorm2[i].attendeeId == card_id) {
+          if (this.dorm2[i].camperID == card_id) {
             this.dorm2.splice(i, 1);
           }
         }
         for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].attendeeId == card_id) {
+          if (this.dorm3[i].camperID == card_id) {
             this.dorm3.splice(i, 1);
           }
         }
       }
       if (board_id == "board-1") {
-        for (let i = 0; i < this.attendees.length; i++) {
-          if (this.attendees[i].attendeeId == card_id) {
-            this.dorm1.push(this.attendees[i]);
+        for (let i = 0; i < this.campers.length; i++) {
+          if (this.campers[i].camperID == card_id) {
+            this.dorm1.push(this.campers[i]);
           }
         }
         for (let i = 0; i < this.dorm2.length; i++) {
-          if (this.dorm2[i].attendeeId == card_id) {
+          if (this.dorm2[i].camperID == card_id) {
             this.dorm2.splice(i, 1);
           }
         }
         for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].attendeeId == card_id) {
+          if (this.dorm3[i].camperID == card_id) {
             this.dorm3.splice(i, 1);
           }
         }
       }
       if (board_id == "board-2") {
-        for (let i = 0; i < this.attendees.length; i++) {
-          if (this.attendees[i].attendeeId == card_id) {
-            this.dorm2.push(this.attendees[i]);
+        for (let i = 0; i < this.campers.length; i++) {
+          if (this.campers[i].camperID == card_id) {
+            this.dorm2.push(this.campers[i]);
           }
         }
         for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].attendeeId == card_id) {
+          if (this.dorm1[i].camperID == card_id) {
             this.dorm1.splice(i, 1);
           }
         }
         for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].attendeeId == card_id) {
+          if (this.dorm3[i].camperID == card_id) {
             this.dorm3.splice(i, 1);
           }
         }
       }
       if (board_id == "board-3") {
-        for (let i = 0; i < this.attendees.length; i++) {
-          if (this.attendees[i].attendeeId == card_id) {
-            this.dorm3.push(this.attendees[i]);
+        for (let i = 0; i < this.campers.length; i++) {
+          if (this.campers[i].camperID == card_id) {
+            this.dorm3.push(this.campers[i]);
           }
         }
         for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].attendeeId == card_id) {
+          if (this.dorm1[i].camperID == card_id) {
             this.dorm1.splice(i, 1);
           }
         }
         for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm2[i].attendeeId == card_id) {
+          if (this.dorm2[i].camperID == card_id) {
             this.dorm2.splice(i, 1);
           }
         }
@@ -154,9 +146,9 @@ export default {
   }
 };
 </script>
- 
+
 <style>
-/** .dormContainer {
+.dormContainer {
   margin-left: 100px;
 }
 
@@ -168,11 +160,11 @@ export default {
   text-align: center;
 }
 
-.otterspace {
+.walle {
   transform: translate(76%, -940%);
 }
 
-.aquaotter {
+.eve {
   transform: translate(15%, -995%);
 }
 
@@ -202,12 +194,12 @@ export default {
   opacity: 0.7;
 }
 
-.dormAttendeeName {
+.dormCampersName {
   text-align: center;
   justify-self: center;
 }
 
-.dormAttendees {
+.dormCampers {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -233,7 +225,7 @@ export default {
   border-radius: 10px;
 }
 
-
+/* Top right text */
 .dorm2 {
   position: absolute;
   top: 8px;
@@ -275,6 +267,13 @@ export default {
   padding: 15px;
 }
 
+/* .card {
+  padding: 15px 25px;
+  background-color: #f3f3f3;
+
+  cursor: pointer;
+  margin-bottom: 15px;
+} */
 
 .drop-zone {
   background-color: #eee;
@@ -286,5 +285,5 @@ export default {
   background-color: #fff;
   margin-bottom: 10px;
   padding: 5px;
-}*/
+}
 </style>

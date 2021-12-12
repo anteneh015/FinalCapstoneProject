@@ -13,7 +13,7 @@ export default {
       let card = document.getElementById(card_id);
       card.style.display = "block";
       e.target.appendChild(card);
-      this.$emit("attendeeDropped", card_id, event.target.id);
+      this.$emit("camperDropped", card_id, event.target.id);
     }
   }
 };
