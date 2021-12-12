@@ -70,6 +70,9 @@ INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone
 INSERT INTO attendees (attendee_id, guardian_id, dorm_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar)
 VALUES (DEFAULT, 6, 2, 1, 'Sarah Sikes', '2006-03-22', 'Female', 3, 'paid', 'N/A', 'Dora');
 
+SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, 
+                guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, guardians.emergency_phone, dorm_name From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id 
+                JOIN dorms ON attendees.dorm_id = dorms.dorm_id 
 
 
 

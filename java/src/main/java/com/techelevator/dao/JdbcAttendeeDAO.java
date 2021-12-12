@@ -22,7 +22,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
     public List<Attendee> findALl() {
         List<Attendee> attendees = new ArrayList<>();
         String sql = "SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, " +
-                "guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, guardians.emergency_phone, dorm_id, dorm_name From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id " +
+                "guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, guardians.emergency_phone, dorm_name From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id " +
                 "JOIN dorms ON attendees.dorm_id = dorms.dorm_id ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -86,8 +86,8 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
        attendee.setGuardianPhone(result.getString("guardian_phone"));
        attendee.setEmgcyName(result.getString("emergency_name"));
        attendee.setEmgcyPhone(result.getString("emergency_phone"));
-       attendee.setDormName(result.getNString("dorm_name"));
-       attendee.setDormId(result.getInt("dorm_id"));
+       attendee.setDormName(result.getString("dorm_name"));
+       //attendee.setDormId(result.getInt("dorm_id"));
 
 
        return attendee;
