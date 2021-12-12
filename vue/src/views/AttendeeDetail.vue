@@ -11,8 +11,13 @@
     <v-card-text>
       <v-form class="px-3" >
         <v-row>
+        <imag />
+        </v-row>
+
+        <v-row>
           <v-text-field v-model="attendee.attendeeName" label="Attendee Name"></v-text-field>&nbsp;
-          <v-text-field v-model="attendee.dateOfBirth" label="Date of Birth"></v-text-field></v-row>
+          <v-text-field v-model="attendee.dateOfBirth" label="Date of Birth"></v-text-field>
+        </v-row>
 
         <v-row>
           <v-text-field v-model="attendee.gender" label="Gender"></v-text-field>&nbsp;

@@ -46,12 +46,13 @@ public class JdbcAttendeeDAOIntegrationTest extends DAOIntegrationTest{
         attendee.setPaymentStatus("paid");
         attendee.setNotes("nothing");
         attendee.setRegistrar("James");
+        attendee.setDormName("Wall-E");
 
 
-        String sqlInsertAttendee = "INSERT INTO attendees VALUES ( DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING attendee_id";
+        String sqlInsertAttendee = "INSERT INTO attendees VALUES ( DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING attendee_id";
         Integer attendeeId = jdbcTemplate.queryForObject(sqlInsertAttendee, Integer.class, TEST_GUARDIAN_ID, 1, attendee.getAttendeeName(),
                 attendee.getDateOfBirth(), attendee.getGender(), attendee.getAgeGroup(), attendee.getPaymentStatus(),
-                attendee.getNotes(), attendee.getRegistrar());
+                attendee.getNotes(), attendee.getRegistrar(), attendee.getDormName());
         attendee.setAttendeeId(attendeeId);
         return attendee;
     }

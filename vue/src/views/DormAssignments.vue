@@ -7,7 +7,7 @@
     </v-snackbar>
 
     <span class="text-uppercase grey--text text-h4 dormTitle">Dorm Assignment</span>
-    <img src="/rocket.jpg" style="width:125%;" class="dormImage" />
+    <img src="/dorm-background.png" style="width:125%;" class="dormImage" />
     <DormBoard id="board-0" class="dormCampers board" @camperDropped="change">
       <CamperCard
         :id="`${attendee.attendeeId}`"
@@ -25,7 +25,7 @@
     <div class="dormName2">
       <span class="text-uppercase grey--text text-h4">Eve</span>
     </div>
-    <v-btn color="success" class="dormButton" @click="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
+    <v-btn color="success" class="submitButton" @click="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
 
     <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
     <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
@@ -63,83 +63,83 @@ export default {
         this.$router.push({ name: "attendees" });
       }, 4000);
     },
-    change(card_id, board_id) {
-      console.log("change");
-      console.log(card_id);
-      console.log(board_id);
-      this.filteredDorm(card_id, board_id);
-      //   this.filteredCampers(card_id);
-    },
-    filteredDorm(card_id, board_id) {
-      if (board_id == "board-0") {
-        for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].camperID == card_id) {
-            this.dorm1.splice(i, 1);
-          }
-        }
-        for (let i = 0; i < this.dorm2.length; i++) {
-          if (this.dorm2[i].camperID == card_id) {
-            this.dorm2.splice(i, 1);
-          }
-        }
-        for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].camperID == card_id) {
-            this.dorm3.splice(i, 1);
-          }
-        }
-      }
-      if (board_id == "board-1") {
-        for (let i = 0; i < this.campers.length; i++) {
-          if (this.campers[i].camperID == card_id) {
-            this.dorm1.push(this.campers[i]);
-          }
-        }
-        for (let i = 0; i < this.dorm2.length; i++) {
-          if (this.dorm2[i].camperID == card_id) {
-            this.dorm2.splice(i, 1);
-          }
-        }
-        for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].camperID == card_id) {
-            this.dorm3.splice(i, 1);
-          }
-        }
-      }
-      if (board_id == "board-2") {
-        for (let i = 0; i < this.campers.length; i++) {
-          if (this.campers[i].camperID == card_id) {
-            this.dorm2.push(this.campers[i]);
-          }
-        }
-        for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].camperID == card_id) {
-            this.dorm1.splice(i, 1);
-          }
-        }
-        for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm3[i].camperID == card_id) {
-            this.dorm3.splice(i, 1);
-          }
-        }
-      }
-      if (board_id == "board-3") {
-        for (let i = 0; i < this.campers.length; i++) {
-          if (this.campers[i].camperID == card_id) {
-            this.dorm3.push(this.campers[i]);
-          }
-        }
-        for (let i = 0; i < this.dorm1.length; i++) {
-          if (this.dorm1[i].camperID == card_id) {
-            this.dorm1.splice(i, 1);
-          }
-        }
-        for (let i = 0; i < this.dorm3.length; i++) {
-          if (this.dorm2[i].camperID == card_id) {
-            this.dorm2.splice(i, 1);
-          }
-        }
-      }
-    }
+    // change(card_id, board_id) {
+    //   console.log("change");
+    //   console.log(card_id);
+    //   console.log(board_id);
+    //   this.filteredDorm(card_id, board_id);
+    //   //   this.filteredCampers(card_id);
+    // },
+    // filteredDorm(card_id, board_id) {
+    //   if (board_id == "board-0") {
+    //     for (let i = 0; i < this.dorm1.length; i++) {
+    //       if (this.dorm1[i].camperID == card_id) {
+    //         this.dorm1.splice(i, 1);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm2.length; i++) {
+    //       if (this.dorm2[i].camperID == card_id) {
+    //         this.dorm2.splice(i, 1);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm3.length; i++) {
+    //       if (this.dorm3[i].camperID == card_id) {
+    //         this.dorm3.splice(i, 1);
+    //       }
+    //     }
+    //   }
+    //   if (board_id == "board-1") {
+    //     for (let i = 0; i < this.campers.length; i++) {
+    //       if (this.campers[i].camperID == card_id) {
+    //         this.dorm1.push(this.campers[i]);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm2.length; i++) {
+    //       if (this.dorm2[i].camperID == card_id) {
+    //         this.dorm2.splice(i, 1);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm3.length; i++) {
+    //       if (this.dorm3[i].camperID == card_id) {
+    //         this.dorm3.splice(i, 1);
+    //       }
+    //     }
+    //   }
+    //   if (board_id == "board-2") {
+    //     for (let i = 0; i < this.campers.length; i++) {
+    //       if (this.campers[i].camperID == card_id) {
+    //         this.dorm2.push(this.campers[i]);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm1.length; i++) {
+    //       if (this.dorm1[i].camperID == card_id) {
+    //         this.dorm1.splice(i, 1);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm3.length; i++) {
+    //       if (this.dorm3[i].camperID == card_id) {
+    //         this.dorm3.splice(i, 1);
+    //       }
+    //     }
+    //   }
+    //   if (board_id == "board-3") {
+    //     for (let i = 0; i < this.campers.length; i++) {
+    //       if (this.campers[i].camperID == card_id) {
+    //         this.dorm3.push(this.campers[i]);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm1.length; i++) {
+    //       if (this.dorm1[i].camperID == card_id) {
+    //         this.dorm1.splice(i, 1);
+    //       }
+    //     }
+    //     for (let i = 0; i < this.dorm3.length; i++) {
+    //       if (this.dorm2[i].camperID == card_id) {
+    //         this.dorm2.splice(i, 1);
+    //       }
+    //     }
+    //   }
+    // }
   },
   created() {
     this.attendees = this.$store.state.attendees;
@@ -148,33 +148,29 @@ export default {
 </script>
 
 <style>
-.dormContainer {
-  margin-left: 100px;
-}
-
 .dormImage {
   border-radius: 25px;
 }
 .dormContainer {
+  margin-left: 100px;
   position: relative;
   text-align: center;
 }
-
 .walle {
-  transform: translate(76%, -940%);
+  transform:translate(20%, -580%);
 }
 
 .eve {
-  transform: translate(15%, -995%);
+  transform: translate(93%, -580%);
 }
 
-.dormButton {
-  transform: translate(0, -1650%);
-}
+.submitButton {
+  transform: translate(60%, -150%);
+} 
 
 .dormName1 {
   background: rgb(243, 243, 243);
-  transform: translate(55%, -2350%);
+  transform: translate(35%, -880%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -182,7 +178,7 @@ export default {
 
 .dormName2 {
   background: rgb(243, 243, 243);
-  transform: translate(397%, -2440%);
+  transform: translate(275%, -980%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -190,7 +186,7 @@ export default {
 
 .dormTitle {
   position: absolute;
-  transform: translate(212%, 100%);
+  transform: translate(140%, 10%);
   opacity: 0.7;
 }
 
@@ -203,25 +199,25 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -150%);
+  transform: translate(-15%, -85%);
   border-radius: 10px;
 }
 
 .dormCard {
   border-radius: 10px;
-  padding: 5px 5px -10px 5px;
+  padding: 5px 5px 5px 5px;
   background: rgb(243, 243, 243);
   box-shadow: 0 0 0 2pt #346a82;
 
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .dorm1 {
   position: absolute;
   top: 8px;
   left: 16px;
-  transform: translate(50%, 50%);
+  transform: translate(30%, 50%);
   border-radius: 10px;
 }
 
@@ -230,7 +226,7 @@ export default {
   position: absolute;
   top: 8px;
   right: 16px;
-  transform: translate(-50%, 50%);
+  transform: translate(45%, 50%);
   border-radius: 10px;
 }
 
