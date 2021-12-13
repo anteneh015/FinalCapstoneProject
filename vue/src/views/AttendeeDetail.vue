@@ -11,7 +11,7 @@
     <v-card-text>
       <v-form class="px-3" >
         <v-row>
-        <v-img v-bind:src="attendee.imgURL"> </v-img>
+        <v-img v-bind:src="attendee.imgURL" max-height="150" max-width="250"> </v-img>
         </v-row>
 
         <v-row>

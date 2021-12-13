@@ -30,7 +30,7 @@ age_group int NOT NULL,
 payment_status varchar(10) NOT NULL, 
 notes varchar(255),
 registrar varchar(45) NOT NULL, 
-img_url varchar(100) NOT NULL,
+img_url varchar NOT NULL,
 
 constraint fk_guardian_id foreign key (guardian_id) references guardians(guardian_id),
 constraint fk_user_id foreign key (user_id) references users(user_id),
