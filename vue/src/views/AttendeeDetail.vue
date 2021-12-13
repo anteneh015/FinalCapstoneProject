@@ -55,7 +55,7 @@
          <v-row justify="center">
         
           <v-file-input v-model="file" label="Load Attendee Picture Here" accept=".jpg"></v-file-input>&nbsp;
-          <v-btn color="primary" @click="submitFile()">Upload Image</v-btn>
+          <v-btn color="primary" @click="uploadImage($event)">Upload Image</v-btn>
         
       </v-row>
 
@@ -75,20 +75,20 @@
 <script>
  import attendeeService from "@/services/AttendeeService";
 
-// import { initializeApp } from "firebase/app";
-// import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 
-// const firebaseConfig = {
-// apiKey: "AIzaSyDxqaJhYgSwVa23CFLTK547oKV0JHjA4s8",
-// authDomain: "robotic-echo-portal.firebaseapp.com",
-// projectId: "robotic-echo-portal",
-// storageBucket: "robotic-echo-portal.appspot.com",
-// messagingSenderId: "607406800952",
-// appId: "1:607406800952:web:98c4ff5033790aacdaa6cd",
-// measurementId: "G-NJ73GLB58Z"
-// };
-// const app = initializeApp(firebaseConfig);
-// const storage = getStorage(app);
+const firebaseConfig = {
+apiKey: "AIzaSyDxqaJhYgSwVa23CFLTK547oKV0JHjA4s8",
+authDomain: "robotic-echo-portal.firebaseapp.com",
+projectId: "robotic-echo-portal",
+storageBucket: "robotic-echo-portal.appspot.com",
+messagingSenderId: "607406800952",
+appId: "1:607406800952:web:98c4ff5033790aacdaa6cd",
+measurementId: "G-NJ73GLB58Z"
+};
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 
 export default {
   data() {
@@ -117,6 +117,22 @@ export default {
       } else {
         return "Unpaid";
       }
+    },
+    uploadImage(e){
+        const file = e.target.file[0];
+
+        const storageRef = ref(storage, file.name)
+
+        uploadBytes(storageRef, file)
+        .then(snapshot =>{
+            console.log(snapshot)
+
+          getDownloadURL(ref(storage, "/" + file.name))
+            .then((url) =>{
+              this.attendee.imgURL = url;
+              console.log("DONE" + url)
+            })
+        })
     },
     cancel() {
       this.$router.push({

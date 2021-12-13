@@ -20,6 +20,7 @@ public class Attendee {
     private String emgcyName;
     private String emgcyPhone;
     private String dormName;
+    private int dormId;
     private String imgURL;
 
     public int getAttendeeId() {
@@ -142,6 +143,14 @@ public class Attendee {
         this.dormName = dormName;
     }
 
+    public int getDormId() {
+        return dormId;
+    }
+
+    public void setDormId(int dormId) {
+        this.dormId = dormId;
+    }
+
     public String getImgURL() {
         return imgURL;
     }
@@ -155,11 +164,11 @@ public class Attendee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendee attendee = (Attendee) o;
-        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && Objects.equals(attendeeName, attendee.attendeeName) && Objects.equals(dateOfBirth, attendee.dateOfBirth) && Objects.equals(gender, attendee.gender) && Objects.equals(paymentStatus, attendee.paymentStatus) && Objects.equals(notes, attendee.notes) && Objects.equals(registrar, attendee.registrar) && Objects.equals(guardianName, attendee.guardianName) && Objects.equals(email, attendee.email) && Objects.equals(address, attendee.address) && Objects.equals(guardianPhone, attendee.guardianPhone) && Objects.equals(emgcyName, attendee.emgcyName) && Objects.equals(emgcyPhone, attendee.emgcyPhone) && Objects.equals(dormName, attendee.dormName) && Objects.equals(imgURL, attendee.imgURL);
+        return attendeeId == attendee.attendeeId && ageGroup == attendee.ageGroup && dormId == attendee.dormId && Objects.equals(attendeeName, attendee.attendeeName) && Objects.equals(dateOfBirth, attendee.dateOfBirth) && Objects.equals(gender, attendee.gender) && Objects.equals(paymentStatus, attendee.paymentStatus) && Objects.equals(notes, attendee.notes) && Objects.equals(registrar, attendee.registrar) && Objects.equals(guardianName, attendee.guardianName) && Objects.equals(email, attendee.email) && Objects.equals(address, attendee.address) && Objects.equals(guardianPhone, attendee.guardianPhone) && Objects.equals(emgcyName, attendee.emgcyName) && Objects.equals(emgcyPhone, attendee.emgcyPhone) && Objects.equals(dormName, attendee.dormName) && Objects.equals(imgURL, attendee.imgURL);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attendeeId, attendeeName, dateOfBirth, gender, ageGroup, paymentStatus, notes, registrar, guardianName, email, address, guardianPhone, emgcyName, emgcyPhone, dormName, imgURL);
+        return Objects.hash(attendeeId, attendeeName, dateOfBirth, gender, ageGroup, paymentStatus, notes, registrar, guardianName, email, address, guardianPhone, emgcyName, emgcyPhone, dormName, dormId, imgURL);
     }
 }

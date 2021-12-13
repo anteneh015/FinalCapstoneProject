@@ -21,7 +21,7 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
     @Override
     public List<Attendee> findALl() {
         List<Attendee> attendees = new ArrayList<>();
-        String sql = "SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, attendees.imgURL " +
+        String sql = "SELECT attendees.attendee_id, attendees.attendee_name, attendees.date_of_birth, attendees.gender, attendees.age_group, attendees.payment_status, attendees.notes, attendees.registrar, attendees.img_url, " +
                 "guardians.guardian_name, guardians.email, guardians.address, guardians.guardian_phone, guardians.emergency_name, guardians.emergency_phone, dorm_name From attendees JOIN guardians ON attendees.guardian_id = guardians.guardian_id " +
                 "JOIN dorms ON attendees.dorm_id = dorms.dorm_id ";
 
