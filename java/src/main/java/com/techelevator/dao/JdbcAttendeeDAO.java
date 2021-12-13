@@ -38,13 +38,13 @@ public class JdbcAttendeeDAO implements AttendeeDAO {
             String sql = "Update attendees SET attendee_name = ?, date_of_birth = ?, gender = ?, payment_status = ?, " +
                     "notes = ?, registrar = ?, img_url = ? WHERE attendee_id = ?";
             jdbcTemplate.update(sql,attendee.getAttendeeName(),attendee.getDateOfBirth(),attendee.getGender(),attendee.getPaymentStatus(),
-                    attendee.getNotes(), attendee.getRegistrar(), attendee.getAttendeeId(), attendee.getImgURL());
+                    attendee.getNotes(), attendee.getRegistrar(), attendee.getImgURL(), attendee.getAttendeeId());
             String guardianSql = "Update guardians SET email = ?, address = ?, guardian_phone = ?, emergency_name = ?, " +
                 "emergency_phone = ? WHERE guardian_name = ?";
             jdbcTemplate.update(guardianSql,attendee.getEmail(),attendee.getAddress(),attendee.getGuardianPhone(),attendee.getEmgcyName(),
                 attendee.getEmgcyPhone(), attendee.getGuardianName());
-            String dormSql = "Update dorms SET dorm_name = ? WHERE dorm_id = ?";
-            jdbcTemplate.update(dormSql,attendee.getDormName());
+//            String dormSql = "Update dorms SET dorm_name = ? WHERE dorm_id = ?";
+//            jdbcTemplate.update(dormSql,attendee.getDormName());
 //
 //
 //        Attendee newAttendee = null;

@@ -30,7 +30,7 @@
     <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
     <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
     <div class="walle">
-      <v-img src="wall-e.png" max-width="120"></v-img>
+      <v-img src="Wall-E-Dorm.png" max-width="120"></v-img>
     </div>
     <div class="eve">
       <v-img src="EVE.png" max-width="120"></v-img>

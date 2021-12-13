@@ -11,7 +11,7 @@
     <v-card-text>
       <v-form class="px-3" >
         <v-row>
-        <img />
+        <v-img v-bind:src="attendee.imgURL"> </v-img>
         </v-row>
 
         <v-row>
@@ -55,7 +55,7 @@
          <v-row justify="center">
         
           <v-file-input v-model="file" label="Load Attendee Picture Here" accept=".jpg"></v-file-input>&nbsp;
-          <v-btn color="primary" @click="uploadImage($event)">Upload Image</v-btn>
+          <v-btn color="primary" @click="uploadImage">Upload Image</v-btn>
         
       </v-row>
 
@@ -96,7 +96,8 @@ export default {
       id: 0,
       paid: "Paid",
       unpaid: "Unpaid",
-      errorMsg: ''
+      errorMsg: '',
+      file: ""
     };
   },
   created() {
@@ -118,16 +119,17 @@ export default {
         return "Unpaid";
       }
     },
-    uploadImage(e){
-        const file = e.target.file[0];
+    uploadImage(){
+       // const realFile = this.file
+       // this.file = e.target.file[0];
 
-        const storageRef = ref(storage, file.name)
-
-        uploadBytes(storageRef, file)
+        const storageRef = ref(storage, this.file.name)
+        console.log(this.file.name)
+        uploadBytes(storageRef, this.file)
         .then(snapshot =>{
             console.log(snapshot)
 
-          getDownloadURL(ref(storage, "/" + file.name))
+          getDownloadURL(ref(storage, this.file.name))
             .then((url) =>{
               this.attendee.imgURL = url;
               console.log("DONE" + url)
