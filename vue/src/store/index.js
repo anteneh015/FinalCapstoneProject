@@ -2,9 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-
 Vue.use(Vuex)
-
 /*
  * The authorization header is set for axios when you login but what happens when you come back or
  * the page is refreshed. When that happens you need to check for the token in local storage and if it
@@ -23,7 +21,6 @@ export default new Vuex.Store({
     user: currentUser || {},
     campName: 'Robotic Echo Summer Camp',
     attendees: [],
-    //dorm1:[]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -51,13 +48,6 @@ export default new Vuex.Store({
       }); 
       attendeeArr[0] = updateAttendee;
     },
-    // SET_DORM(state, { attendee, dormID }) {
-		// 	console.log(camper);
-		// 	console.log(dormID);
-		// 	if (dormID == 1) {
-		// 		state.dorm1.push(camper);
-		// 	}
-		// },
    
   }
 })

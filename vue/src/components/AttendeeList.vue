@@ -34,7 +34,7 @@
 
     <form class="list">
     <attendee
-      v-for="attendee in filteredList"
+      v-for="attendee in listOfAttendees"
       v-bind:key="attendee.attendeeId"
       v-bind:attendee="attendee"
     />
@@ -45,50 +45,78 @@
 <script>
 
 import Attendee from "@/components/Attendee.vue";
-
+import attendeeService from "@/services/AttendeeService";
 export default {
   name: "attendee-list",
   data() {
     return {
       errorMsg: "",
+      filteredAttendees: [],
       filter: {
         paymentStatus: "",
         registrar: "",
         attendeeName: "",
         ageGroup: ""
-      }
+      }, 
     };
   },
   components: {
     Attendee,
   },
-  computed: {
+  methods: {
     filteredList() {
-      let filteredAttendees = this.$store.state.attendees;
+     
       if (this.filter.paymentStatus != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => {
+        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
          return attendee.paymentStatus == (this.filter.paymentStatus);
         });
       }
       if (this.filter.registrar != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => { 
+        this.filteredAttendees = this.filteredAttendees.filter((attendee) => { 
          return attendee.registrar == (this.filter.registrar);
         });
       }
       if (this.filter.attendeeName != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => {
+        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
          return attendee.attendeeName
             .toLowerCase()
             .includes(this.filter.attendeeName.toLowerCase());
         });
       }
       if (this.filter.ageGroup != "") {
-        filteredAttendees = filteredAttendees.filter((attendee) => {
+        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
          return attendee.ageGroup == (this.filter.ageGroup);
         });
       }
-      return filteredAttendees;
+      return this.filteredAttendees;
     }
+  },
+  computed: {
+    listOfAttendees(){
+      return this.filteredList();
+    }
+  },
+  created() {
+  attendeeService
+    .getAllAttendees()
+    .then((response) => {
+      this.filteredAttendees = response.data;
+    })
+    .catch((error) => {
+      if (error.response) {
+        this.errorMsg =
+          "Error creating new board " +
+          error.response.status +
+          " " +
+          error.response.statusText;
+      }
+      else if (error.request) {
+        this.errorMsg = "Error connecting to Server";
+      }
+      else {
+        this.errorMsg = "Some JavaScript error occurred";
+      }
+    });
   },
 };
 </script>

@@ -91,6 +91,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 export default {
+  // props:["attendee"],
   data() {
     return {
       id: 0,
@@ -120,9 +121,7 @@ export default {
       }
     },
     uploadImage(){
-       // const realFile = this.file
-       // this.file = e.target.file[0];
-
+  
         const storageRef = ref(storage, this.file.name)
         console.log(this.file.name)
         uploadBytes(storageRef, this.file)

@@ -1,10 +1,10 @@
 <template>
   <div class="dormContainer">
 
-    <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+    <!-- <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
       <span class="font-weight-bold">Attendees Successfully Assigned!</span>
       <v-btn class="mx-4" text color="white" @click="snackbar=false">Exit</v-btn>
-    </v-snackbar>
+    </v-snackbar> -->
 
     <span class="text-uppercase grey--text text-h4 dormTitle">Dorm Assignment</span>
     <img src="/dorm-background.png" style="width:125%;" class="dormImage" />
@@ -30,7 +30,7 @@
     <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
     <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
     <div class="walle">
-      <v-img src="Wall-E-Dorm.png" max-width="120"></v-img>
+      <v-img src="Wall-E-Dorm.png" max-width="170"></v-img>
     </div>
     <div class="eve">
       <v-img src="EVE.png" max-width="120"></v-img>
@@ -45,9 +45,6 @@ import CamperCard from "@/components/CamperCard.vue";
 export default {
   data() {
     return {
-      dorm1: [],
-      dorm2: [],
-      dorm3: [],
       snackbar: false
     };
   },
@@ -63,83 +60,9 @@ export default {
         this.$router.push({ name: "attendees" });
       }, 4000);
     },
-    // change(card_id, board_id) {
-    //   console.log("change");
-    //   console.log(card_id);
-    //   console.log(board_id);
-    //   this.filteredDorm(card_id, board_id);
-    //   //   this.filteredCampers(card_id);
-    // },
-    // filteredDorm(card_id, board_id) {
-    //   if (board_id == "board-0") {
-    //     for (let i = 0; i < this.dorm1.length; i++) {
-    //       if (this.dorm1[i].camperID == card_id) {
-    //         this.dorm1.splice(i, 1);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm2.length; i++) {
-    //       if (this.dorm2[i].camperID == card_id) {
-    //         this.dorm2.splice(i, 1);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm3.length; i++) {
-    //       if (this.dorm3[i].camperID == card_id) {
-    //         this.dorm3.splice(i, 1);
-    //       }
-    //     }
-    //   }
-    //   if (board_id == "board-1") {
-    //     for (let i = 0; i < this.campers.length; i++) {
-    //       if (this.campers[i].camperID == card_id) {
-    //         this.dorm1.push(this.campers[i]);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm2.length; i++) {
-    //       if (this.dorm2[i].camperID == card_id) {
-    //         this.dorm2.splice(i, 1);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm3.length; i++) {
-    //       if (this.dorm3[i].camperID == card_id) {
-    //         this.dorm3.splice(i, 1);
-    //       }
-    //     }
-    //   }
-    //   if (board_id == "board-2") {
-    //     for (let i = 0; i < this.campers.length; i++) {
-    //       if (this.campers[i].camperID == card_id) {
-    //         this.dorm2.push(this.campers[i]);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm1.length; i++) {
-    //       if (this.dorm1[i].camperID == card_id) {
-    //         this.dorm1.splice(i, 1);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm3.length; i++) {
-    //       if (this.dorm3[i].camperID == card_id) {
-    //         this.dorm3.splice(i, 1);
-    //       }
-    //     }
-    //   }
-    //   if (board_id == "board-3") {
-    //     for (let i = 0; i < this.campers.length; i++) {
-    //       if (this.campers[i].camperID == card_id) {
-    //         this.dorm3.push(this.campers[i]);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm1.length; i++) {
-    //       if (this.dorm1[i].camperID == card_id) {
-    //         this.dorm1.splice(i, 1);
-    //       }
-    //     }
-    //     for (let i = 0; i < this.dorm3.length; i++) {
-    //       if (this.dorm2[i].camperID == card_id) {
-    //         this.dorm2.splice(i, 1);
-    //       }
-    //     }
-    //   }
-    // }
+    change(){
+      //call API
+    }
   },
   created() {
     this.attendees = this.$store.state.attendees;
@@ -157,7 +80,7 @@ export default {
   text-align: center;
 }
 .walle {
-  transform:translate(20%, -580%);
+  transform:translate(17%, -520%);
 }
 
 .eve {
@@ -221,7 +144,6 @@ export default {
   border-radius: 10px;
 }
 
-/* Top right text */
 .dorm2 {
   position: absolute;
   top: 8px;
@@ -262,14 +184,6 @@ export default {
 
   padding: 15px;
 }
-
-/* .card {
-  padding: 15px 25px;
-  background-color: #f3f3f3;
-
-  cursor: pointer;
-  margin-bottom: 15px;
-} */
 
 .drop-zone {
   background-color: #eee;
