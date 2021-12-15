@@ -11,9 +11,9 @@
     </div>
     <form class="list">
       <attendeeEmail
-        v-for="attendee in listOfAttendees"
-        v-bind:key="attendee.attendeeId"
-        v-bind:attendee="attendee"
+        v-for="attendeeEmail in listOfAttendees"
+        v-bind:key="attendeeEmail.attendeeName"
+        v-bind:attendeeEmail="attendeeEmail"
       />
     </form>
     <form ref="form" @submit.prevent="sendEmail">
@@ -43,6 +43,11 @@ export default {
   components: {
     AttendeeEmail,
   },
+  computed: {
+    listOfAttendees() {
+      return this.filteredList();
+    }
+  },
   methods: {
     filteredList() {
       if (this.filter.attendeeName != "") {
@@ -54,11 +59,7 @@ export default {
       }
       return this.filteredAttendees;
     },
-  computed: {
-    listOfAttendees() {
-      return this.filteredList();
-    }
-  },
+ 
     sendEmail() {
       emailjs
         .sendForm(
