@@ -18,9 +18,9 @@
     </form>
     <form ref="form" @submit.prevent="sendEmail">
       <label>Name</label>
-      <input type="text" name="user_name" />
+      <input type="text" name="to_name" />
       <label>Email</label>
-      <input type="email" name="user_email" />
+      <input type="text" name="email" />
       <label>Message</label>
       <textarea name="message"></textarea>
       <input type="submit" value="Send" />
@@ -29,7 +29,7 @@
 </template>
 <script>
 import emailjs from "emailjs-com";
-import AttendeeEmail from "@/components/AttendeeEmail";
+import AttendeeEmail from "@/components/AttendeeEmail.vue";
 import attendeeService from "@/services/AttendeeService";
 export default {
   data() {
