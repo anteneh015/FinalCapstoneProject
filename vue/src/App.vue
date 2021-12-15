@@ -23,7 +23,7 @@ export default {
       return this.$store.state.user != "currentUser";
     },
   },
-    created() {
+  created() {
   attendeeService
     .getAllAttendees()
     .then((response) => {
