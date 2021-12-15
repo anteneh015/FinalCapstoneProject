@@ -1,0 +1,52 @@
+<template>
+  <div class="attendee">
+    <v-container fluid class="my-10 mx-16">
+      <v-row no-gutters>
+        <v-col cols="12" sm="4" md="2">
+          <div class="caption blue--text">Name</div>
+          <div>{{ attendee.attendeeName }}</div>
+        </v-col>
+
+        <v-col cols="2" sm="4" md="2">
+          <div class="caption blue--text">Payment Status</div>
+          <div class="right">
+            <v-chip
+              small
+              :color="`${
+                attendee.paymentStatus == 'paid' ? '#9A031E' : '#61A5c2'}`"
+              class="white--text caption my-2"
+              >{{ attendee.paymentStatus == 'unpaid' ? "Paid" : "Unpaid" }}
+            </v-chip>
+          </div>
+        </v-col>
+
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Guardian Name</div>
+          <div>{{ attendee.guardianName }}</div>
+        </v-col>
+   
+        <v-col cols="12" sm="4" md="1">
+          <div class="caption blue--text">Email</div>
+          <div>{{ attendee.email }}</div>
+        </v-col>
+        </v-row>
+
+      <v-divider></v-divider>
+    </v-container>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: "attendeeEmail",
+  props: ["attendeeEmail"],
+};
+</script>
+
+<style scoped>
+.attendee {
+  border: cornflowerblue;
+  border-radius: 10px;
+}
+</style>

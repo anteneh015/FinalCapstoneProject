@@ -1,10 +1,10 @@
 <template>
   <div class="dormContainer">
 
-    <!-- <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
+    <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
       <span class="font-weight-bold">Attendees Successfully Assigned!</span>
       <v-btn class="mx-4" text color="white" @click="snackbar=false">Exit</v-btn>
-    </v-snackbar> -->
+    </v-snackbar>
 
     <span class="text-uppercase grey--text text-h4 dormTitle">Dorm Assignment</span>
     <img src="/dorm-background.png" style="width:125%;" class="dormImage" />
@@ -25,10 +25,10 @@
     <div class="dormName2">
       <span class="text-uppercase grey--text text-h4">Eve</span>
     </div>
-    <v-btn color="success" class="submitButton" @click="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
+    <v-btn color="success" class="submitButton" @click.prevent="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
 
-    <DormBoard id="board-1" class="dorm1 board" @camperDropped="change"></DormBoard>
-    <DormBoard id="board-2" class="dorm2 board" @camperDropped="change"></DormBoard>
+    <DormBoard id="board-1" class="dorm1 board" draggable="true" @camperDropped="change"></DormBoard>
+    <DormBoard id="board-2" class="dorm2 board" draggable="true" @camperDropped="change"></DormBoard>
     <div class="walle">
       <v-img src="Wall-E-Dorm.png" max-width="170"></v-img>
     </div>
