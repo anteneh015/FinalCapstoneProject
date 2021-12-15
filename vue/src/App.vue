@@ -23,11 +23,13 @@ export default {
       return this.$store.state.user != "currentUser";
     },
   },
+
   created() {
+
   attendeeService
     .getAllAttendees()
     .then((response) => {
-      this.filteredAttendees = response.data;
+       this.$store.commit("SET_ATTENDEES", response.data);
     })
     .catch((error) => {
       if (error.response) {
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-html {
+/* html {
     height: 100%; 
     width: 100%;
     position: relative;
@@ -57,5 +59,5 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 </style>
