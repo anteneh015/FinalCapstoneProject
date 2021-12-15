@@ -13,7 +13,7 @@
       <attendeeEmail
         v-for="attendee in listOfAttendees"
         v-bind:key="attendee.attendeeId"
-        v-bind:attendeeEmail="attendeeEmail"
+        v-bind:attendee="attendee"
       />
     </form>
     <form ref="form" @submit.prevent="sendEmail">
@@ -27,12 +27,10 @@
     </form>
   </div>
 </template>
-
 <script>
 import emailjs from "emailjs-com";
 import AttendeeEmail from "@/components/AttendeeEmail";
 import attendeeService from "@/services/AttendeeService";
-
 export default {
   data() {
     return {

@@ -1,47 +1,75 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
-    </form>
-  </div>
+  <v-container class="fill-height" fluid>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      v-if="registrationErrors"
+    >{{ registrationErrorMsg }}</div>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <v-card class="elevation-12">
+          <v-toolbar color="#61A5c2" dark flat>
+            <v-toolbar-title>Create Account</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <span>Let's get you on board</span>
+          </v-toolbar>
+      
+          <v-card-text>
+            <v-form>
+              <v-text-field
+                label="User Name"
+                name="login"
+                id="username"
+                prepend-icon="mdi-robot-love-outline"
+                type="text"
+                v-model="user.username"
+              ></v-text-field>
+              <v-text-field
+                id="Email"
+                name="email"
+                prepend-icon="mdi-email-send-outline"
+           
+                label="E-mail"
+                type="email"
+                required
+                v-model="user.email"
+              ></v-text-field>
+
+
+               <v-text-field
+                id="password"
+                label="Password"
+                name="password"
+                prepend-icon="mdi-lock-question"
+                type="password"
+                required
+                v-model="user.password"
+              ></v-text-field>
+              <v-text-field
+                id="confirmPassword"
+                label="Confirm Password"
+                name="password"
+                prepend-icon="mdi-lock"
+                type="password"
+                required
+                v-model="user.confirmPassword"
+              ></v-text-field>
+              </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+             <v-btn color="#61A5c2" dark flat router :to="{ name: 'login' }">Back to login</v-btn>
+            
+            <v-btn @click="registerUser()" color="#61A5c2" dark flat>Create Account</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import authService from '../services/AuthService';
+import authService from "../services/AuthService";
 
 export default {
   name: 'register',
@@ -49,6 +77,7 @@ export default {
     return {
       user: {
         username: '',
+        email: '',
         password: '',
         confirmPassword: '',
         role: 'user',
@@ -91,3 +120,4 @@ export default {
 </script>
 
 <style></style>
+
