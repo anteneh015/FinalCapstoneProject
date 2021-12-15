@@ -1,7 +1,8 @@
 <template class="abc">
   <div class="home">
-    <h1>Home</h1>
-    <img src="/dorm-background.png" style="width:100%;" class="dormImage" />
+   
+    <img src="/background3.jpg" style="width:125%;" class="dormImage" />
+     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
     <div><router-link v-bind:to="{ name: 'attendees' }">Attendees</router-link></div>
 

@@ -7,9 +7,9 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Attendees from '../views/Attendees'
 import AttendeeDetail from '../views/AttendeeDetail'
-// import ExtraInfo from '../views/ExtraInfo'
-
 import DormAssignments from '../views/DormAssignments'
+import Email from '../views/Email'
+import About from '../views/About'
 
 
 Vue.use(Router)
@@ -83,14 +83,22 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    // {
-    //   path: "/attendees/:id/info",
-    //   name: "info",
-    //   component: ExtraInfo,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
+    {
+      path: "/emails",
+      name: "emails",
+      component: Email,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 

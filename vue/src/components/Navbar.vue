@@ -66,6 +66,18 @@ export default {
           route: "/dormAssignments",
           role: "ROLE_USER"
         },
+          {
+          icon: "mdi-email-send-outline",
+          text: "Email",
+          route: "/emails",
+          role: "ROLE_USER"
+        },
+          {
+          icon: "mdi-information-outline",
+          text: "About",
+          route: "/about",
+          role: "ROLE_USER"
+        },
       ],
     };
   },
