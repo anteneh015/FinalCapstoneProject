@@ -14,17 +14,28 @@
     <div class="block">
       <v-container>
         <p>
-          Ea pri vitae antiopam theophrastus, ut sit erat putent eruditi. Qui at
-          mutat adversarium. Postulant delicatissimi ei qui, an nonumy dolorem
-          nam. Cu philosophia instructior pri, nec cu mutat homero saperet, cu
-          paulo ridens legendos has. Cu veri oportere pri, ad integre numquam
-          iudicabit mel. Nec ea ferri iudicabit dissentiet. Ex solet melius
-          omittantur his, in gloriatur vulputate mel. Ad nostro repudiandae ius,
-          est amet molestie te. No est modus sensibus volutpat, et putent
-          dissentias has, et sea eirmod vivendum. Paulo lucilius expetenda sea
-          in, cu nam mazim sanctus ponderum. Te nam mundi corpora, dicat dolore
-          debitis ius in. Indoctum adversarium definitionem an pro, an eam vidit
-          utinam detracto.
+          Your aspiring coder, game developer, techie, and computer scientist's
+          face will explode with happiness when they attend one of the 2-week;
+          4-week; or 6-week Robotic Echo summer camps.
+        </p>
+        <p>
+          Depending on the length selected, your little gear will learn
+          JavaScript, HTML, and/or CSS. JavaScript is a kid friendly programming
+          language. At Robotic Echo campers learn how create a set of
+          instructions to tell a computer how to complete a task. Programming
+          empowers kids - whether they want to learn robotics, design a game, or
+          build an app. Code is everywhere!
+        </p>
+        <p>
+          The earlier kids start, the more natural programming becomes. Robotic
+          Echo is designed to help kids and teens learn front-end web
+          development. Everything that you see on a website, like buttons,
+          links, animations, and more, were created by a front-end web
+          developer.
+        </p>
+        <p>
+          Robotic Echo summer camps help students learn the idea of programming
+          through hands-on fun programming projects.
         </p>
       </v-container>
     </div>
@@ -66,38 +77,38 @@ export default {
     return {
       items: [
         {
-          src: "/about1.jpg",
+          src: "/about6.png",
         },
         {
           src: "/about2.jpeg",
         },
         {
-          src: "/about3.jpg",
+          src: "/about8.jpg",
         },
         {
-          src: "/about4.jpeg",
+          src: "/about7.png",
         },
       ],
-      teams:[
+      teams: [
         {
           id: 1,
           src: "/De'Amber Watson (1).jpg",
           name: "De'Amber Watson",
-          title: 'Counselor'
+          title: "Counselor",
         },
         {
           id: 2,
           src: "/anteneh.png",
-          name: 'Anteneh Tekle',
-          title: 'Counselor'
+          name: "Anteneh Tekle",
+          title: "Counselor",
         },
         {
           id: 3,
           src: "/Liping Castillo.jpg",
-          name: 'Liping Castillo',
-          title: 'Counselor'
-        }
-      ] 
+          name: "Liping Castillo",
+          title: "Counselor",
+        },
+      ],
     };
   },
 };

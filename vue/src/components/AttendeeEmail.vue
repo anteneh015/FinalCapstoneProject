@@ -9,7 +9,7 @@
 
       
 
-        <v-col cols="12" sm="4" md="2">
+        <v-col cols="12" sm="4" md="3">
           <div class="caption blue--text">Guardian Name</div>
           <div>{{ attendee.guardianName }}</div>
         </v-col>
@@ -19,7 +19,7 @@
           <div>{{ attendee.email }}</div>
         </v-col>
 
-  <v-col cols="2" sm="4" md="2">
+        <v-col cols="2" sm="4" md="2">
           <div class="caption blue--text">Payment Status</div>
           <div class="right">
             <v-chip

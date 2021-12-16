@@ -28,9 +28,9 @@
             <v-chip
               small
               :color="`${
-                attendee.paymentStatus == 'paid' ? '#61A5c2' : '#9A031E'}`"
+                attendee.paymentStatus == 'recieved' ? '#61A5c2' : '#9A031E'}`"
               class="white--text caption my-2"
-              >{{ attendee.paymentStatus == 'unpaid' ? "Unpaid" : "Paid" }}
+              >{{ attendee.paymentStatus == 'unpaid' ? "unpaid" : "recieved" }}
             </v-chip>
           </div>
         </v-col>

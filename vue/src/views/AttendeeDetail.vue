@@ -23,8 +23,8 @@
 
         <v-row>
           <v-text-field v-model="attendee.registrar" label="Registrar"></v-text-field>&nbsp;
-          <v-text-field v-if="attendee.paymentStatus" v-model="paid" label="Payment Status"></v-text-field>
-          <v-text-field v-if="!attendee.paymentStatus" v-model="unpaid" label="Payment Status"></v-text-field>
+          <v-text-field  v-model="attendee.paymentStatus" label="Payment Status"></v-text-field>
+          <!-- <v-text-field v-if="!attendee.paymentStatus" v-model="unpaid" label="Payment Status"></v-text-field> -->
         </v-row>
 
         <v-row>

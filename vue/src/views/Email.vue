@@ -14,7 +14,16 @@
               ></v-text-field>
             </v-form>
             <v-spacer></v-spacer>
-            <v-form class="emailForm" ref="form" @submit.prevent="sendEmail">
+              <form class="emailForm" ref="form" @submit.prevent="sendEmail">
+      <label>Attendee Name</label>
+      <input type="text" name="to_name" />
+      <label>Email</label>
+      <input type="text" name="email" />
+      <label>Message</label>
+      <textarea name="message"></textarea>
+      <input type="submit" value="Send" />
+    </form>
+            <!-- <v-form class="emailForm" ref="form" @submit.prevent="sendEmail">
               <v-text-field
                 label="Attendee Name: "
                 name="to_name"
@@ -26,7 +35,6 @@
                 name="email"
                 prepend-icon="mdi-email-send-outline"
                 type="text"
-                required
               ></v-text-field>
               <v-text-field
                 label="Message"
@@ -38,8 +46,8 @@
                 <v-btn type="submit" value="Send" color="#61A5c2" dark
                   >Send</v-btn
                 >
-             
-            </v-form>
+             <input type="submit" value="Send" />
+            </v-form> -->
             <v-spacer></v-spacer>
             <v-form>
               <attendee-email

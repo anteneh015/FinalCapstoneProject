@@ -5,7 +5,7 @@
       <label for="payment">Payment Status: </label>
       <select id="payment" v-model="filter.paymentStatus" style="border: 2px solid #61A5c2;">
         <option value="">All</option>
-        <option>paid</option>
+        <option>recieved</option>
         <option>unpaid</option>
       </select>
      </div>
