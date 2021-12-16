@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="nameOption">
-      <label for="attendeeName">Attendee Name: </label>
+      <label for="attendeeName">Search for attendee: </label>
       <input
         type="text"
         id="attendeeName"
@@ -9,6 +9,16 @@
       
       />
     </div>
+ <form class="emailForm" ref="form" @submit.prevent="sendEmail">
+      <label>Attendee Name: </label>
+      <input class = "input" type="text" name="to_name" />
+      <label>Email: </label> 
+      <input class = "input" type="text" name="email" />
+      <label>Message: </label>
+      <textarea class = "input" name="message"></textarea>
+      <input class = "input" type="submit" value="Send" />
+    </form>
+
     <form class="list">
       <attendee-email
         v-for="attendee in listOfAttendees"
@@ -17,17 +27,7 @@
       />
     </form>
 
-
-
-    <form class="emailForm" ref="form" @submit.prevent="sendEmail">
-      <label>Attendee Name</label>
-      <input type="text" name="to_name" />
-      <label>Email</label>
-      <input type="text" name="email" />
-      <label>Message</label>
-      <textarea name="message"></textarea>
-      <input type="submit" value="Send" />
-    </form>
+   
   </div>
 </template>
 <script>
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style scoped>
-.emailForm {
+.emailForm, #attendeeName, #nameOption, .input {
   border-radius: 10px;
   padding: 2px 2px 2px 2px;
   background: rgb(243, 243, 243);

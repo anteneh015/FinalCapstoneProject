@@ -7,28 +7,31 @@
           <div>{{ attendee.attendeeName }}</div>
         </v-col>
 
-        <v-col cols="2" sm="4" md="2">
+      
+
+        <v-col cols="12" sm="4" md="2">
+          <div class="caption blue--text">Guardian Name</div>
+          <div>{{ attendee.guardianName }}</div>
+        </v-col>
+   
+        <v-col cols="12" sm="4" md="4">
+          <div class="caption blue--text">Email</div>
+          <div>{{ attendee.email }}</div>
+        </v-col>
+
+  <v-col cols="2" sm="4" md="2">
           <div class="caption blue--text">Payment Status</div>
           <div class="right">
             <v-chip
               small
               :color="`${
-                attendee.paymentStatus == 'paid' ? '#9A031E' : '#61A5c2'}`"
+                attendee.paymentStatus == 'paid' ?  '#61A5c2' : '#9A031E'}`"
               class="white--text caption my-2"
-              >{{ attendee.paymentStatus == 'unpaid' ? "Paid" : "Unpaid" }}
+              >{{ attendee.paymentStatus == 'unpaid' ? "Unpaid" : "Paid" }}
             </v-chip>
           </div>
         </v-col>
 
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Guardian Name</div>
-          <div>{{ attendee.guardianName }}</div>
-        </v-col>
-   
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Email</div>
-          <div>{{ attendee.email }}</div>
-        </v-col>
         </v-row>
 
       <v-divider></v-divider>
