@@ -1,34 +1,58 @@
 <template>
-  <div>
-    <div id="nameOption">
-      <label for="attendeeName">Search for attendee: </label>
-      <input
-        type="text"
-        id="attendeeName"
-        v-model.trim="attendeeName"
-      
-      />
-    </div>
- <form class="emailForm" ref="form" @submit.prevent="sendEmail">
-      <label>Attendee Name: </label>
-      <input class = "input" type="text" name="to_name" />
-      <label>Email: </label> 
-      <input class = "input" type="text" name="email" />
-      <label>Message: </label>
-      <textarea class = "input" name="message"></textarea>
-      <input class = "input" type="submit" value="Send" />
-    </form>
-
-    <form class="list">
-      <attendee-email
-        v-for="attendee in listOfAttendees"
-        v-bind:key="attendee.attendeeName"
-        v-bind:attendee="attendee"
-      />
-    </form>
-
+  <v-container bg fill-height grid-list-md text-xs-center>
+    <v-row align="center" justify="center">
+    
+        <v-card class="elevation-12">
+          <v-card-text>
+            <v-form>
+              <v-text-field
+                label="Search for attendee:"
+                name="login"
+                prepend-icon="mdi-robot-outline"
+                type="text"
+                v-model.trim="attendeeName"
+              ></v-text-field>
+            </v-form>
+            <v-spacer></v-spacer>
+            <v-form class="emailForm" ref="form" @submit.prevent="sendEmail">
+              <v-text-field
+                label="Attendee Name: "
+                name="to_name"
+                prepend-icon="mdi-robot-outline"
+                type="text"
+              ></v-text-field>
+              <v-text-field
+                label="Email"
+                name="email"
+                prepend-icon="mdi-email-send-outline"
+                type="text"
+                required
+              ></v-text-field>
+              <v-text-field
+                label="Message"
+                name="message"
+                prepend-icon="mdi-message-processing-outline"
+                type="text"
+              ></v-text-field>
+             
+                <v-btn type="submit" value="Send" color="#61A5c2" dark
+                  >Send</v-btn
+                >
+             
+            </v-form>
+            <v-spacer></v-spacer>
+            <v-form>
+              <attendee-email
+                v-for="attendee in listOfAttendees"
+                v-bind:key="attendee.attendeeName"
+                v-bind:attendee="attendee"
+              />
+            </v-form>
+          </v-card-text>
+        </v-card>
    
-  </div>
+    </v-row>
+  </v-container>
 </template>
 <script>
 import emailjs from "emailjs-com";

@@ -1,19 +1,16 @@
 <template>
 
-  <v-card>
+  <v-card class="fill-height" fluid>
     <!-- <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
       <span class="font-weight-bold">Edit successfully</span>
       <v-btn class="mx-4" text color="white" @click="snackbar=false">Exit</v-btn>
     </v-snackbar> -->
 
-    <v-card-title class="headline blue lighten-2">Edit Attendee</v-card-title>
+    <v-card-title class="headline blue lighten-2">Edit Attendee</v-card-title><br>
 
-    <v-card-text>
+    <v-card-text  justify="center" >
+      <v-img v-bind:src="attendee.imgURL" max-height="250" max-width="150"> </v-img><br>
       <v-form class="px-3" >
-        <v-row>
-        <v-img v-bind:src="attendee.imgURL" max-height="250" max-width="150"> </v-img>
-        </v-row>
-
         <v-row>
           <v-text-field v-model="attendee.attendeeName" label="Attendee Name"></v-text-field>&nbsp;
           <v-text-field v-model="attendee.dateOfBirth" label="Date of Birth"></v-text-field>
@@ -36,7 +33,8 @@
         </v-row>
 
         <v-row>
-          <v-text-field v-model="attendee.email" label="Email"></v-text-field>
+          <v-text-field v-model="attendee.email" label="Email"></v-text-field>&nbsp;
+          <v-text-field v-model="attendee.dormName" label="Dorm Name"></v-text-field>
         </v-row>
 
         <v-row>

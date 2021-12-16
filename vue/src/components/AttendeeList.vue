@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       errorMsg: "",
-      filteredAttendees: [],
+      attendees: [],
       filter: {
         paymentStatus: "",
         registrar: "",
@@ -70,30 +70,27 @@ export default {
   },
   methods: {
     filteredList() {
-     
-      if (this.filter.paymentStatus != "") {
-        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
-         return attendee.paymentStatus == (this.filter.paymentStatus);
-        });
-      }
-      if (this.filter.registrar != "") {
-        this.filteredAttendees = this.filteredAttendees.filter((attendee) => { 
-         return attendee.registrar == (this.filter.registrar);
-        });
-      }
-      if (this.filter.attendeeName != "") {
-        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
-         return attendee.attendeeName
-            .toLowerCase()
-            .includes(this.filter.attendeeName.toLowerCase());
-        });
-      }
-      if (this.filter.ageGroup != "") {
-        this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
-         return attendee.ageGroup == (this.filter.ageGroup);
-        });
-      }
-      return this.filteredAttendees;
+       
+     return this.attendees.filter((attendee) => {
+        if(this.filter.ageGroup){
+            return attendee.paymentStatus.toLowerCase()
+              .includes(this.filter.paymentStatus.toLowerCase()) 
+          && attendee.registrar.toLowerCase()
+              .includes(this.filter.registrar.toLowerCase())
+          && attendee.attendeeName
+              .toLowerCase()
+              .includes(this.filter.attendeeName.toLowerCase())
+            && attendee.ageGroup == (this.filter.ageGroup);
+        }else{
+            return attendee.paymentStatus.toLowerCase()
+              .includes(this.filter.paymentStatus.toLowerCase()) 
+          && attendee.registrar.toLowerCase()
+              .includes(this.filter.registrar.toLowerCase())
+          && attendee.attendeeName
+              .toLowerCase()
+              .includes(this.filter.attendeeName.toLowerCase())
+        }
+      });
     }
   },
  
@@ -101,7 +98,7 @@ export default {
   attendeeService
     .getAllAttendees()
     .then((response) => {
-      this.filteredAttendees = response.data;
+      this.attendees = response.data;
     })
     .catch((error) => {
       if (error.response) {

@@ -7,7 +7,7 @@
     </v-snackbar>
 
     <span class="text-uppercase grey--text text-h4 dormTitle">Dorm Assignment</span>
-    <img src="/dorm-background.png" style="width:125%;" class="dormImage" />
+    <img src="/dorm-background.png" style="width:100%;" class="dormImage" />
     <DormBoard id="board-0" class="dormCampers board" @camperDropped="change">
       <CamperCard
         :id="`${attendee.attendeeId}`"
@@ -56,8 +56,6 @@ export default {
     snackbarSubmit() {
       //send info to database
       //get 200 .then
-
-
       this.snackbar = true;
       setTimeout(() => {
         this.snackbar = false;
@@ -85,20 +83,20 @@ export default {
   text-align: center;
 }
 .walle {
-  transform:translate(15%, -550%);
+  transform:translate(15%, -670%);
 }
 
 .eve {
-  transform: translate(92%, -615%);
+  transform: translate(75%, -730%);
 }
 
 .submitButton {
-  transform: translate(60%, -150%);
+  transform: translate(0%, -200%);
 } 
 
 .dormName1 {
   background: rgb(243, 243, 243);
-  transform: translate(35%, -980%);
+  transform: translate(60%, -1330%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -106,7 +104,7 @@ export default {
 
 .dormName2 {
   background: rgb(243, 243, 243);
-  transform: translate(292%, -1080%);
+  transform: translate(385%, -1425%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -114,7 +112,7 @@ export default {
 
 .dormTitle {
   position: absolute;
-  transform: translate(140%, 10%);
+  transform: translate(210%, 70%);
   opacity: 0.7;
 }
 
@@ -127,7 +125,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-15%, -77%);
+  transform: translate(-50%, -90%);
   border-radius: 10px;
 }
 
@@ -145,7 +143,7 @@ export default {
   position: absolute;
   top: 8px;
   left: 16px;
-  transform: translate(30%, 50%);
+  transform: translate(55%, 50%);
   border-radius: 10px;
 }
 
@@ -153,7 +151,7 @@ export default {
   position: absolute;
   top: 8px;
   right: 16px;
-  transform: translate(45%, 50%);
+  transform: translate(-62%, 50%);
   border-radius: 10px;
 }
 
