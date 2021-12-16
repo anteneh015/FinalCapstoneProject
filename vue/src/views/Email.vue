@@ -5,19 +5,22 @@
       <input
         type="text"
         id="attendeeName"
-        v-model.trim="filter.attendeeName"
-        style="border: 2px solid #61a5c2"
+        v-model.trim="attendeeName"
+      
       />
     </div>
     <form class="list">
-      <attendeeEmail
-        v-for="attendeeEmail in listOfAttendees"
-        v-bind:key="attendeeEmail.attendeeName"
-        v-bind:attendeeEmail="attendeeEmail"
+      <attendee-email
+        v-for="attendee in listOfAttendees"
+        v-bind:key="attendee.attendeeName"
+        v-bind:attendee="attendee"
       />
     </form>
-    <form ref="form" @submit.prevent="sendEmail">
-      <label>Name</label>
+
+
+
+    <form class="emailForm" ref="form" @submit.prevent="sendEmail">
+      <label>Attendee Name</label>
       <input type="text" name="to_name" />
       <label>Email</label>
       <input type="text" name="email" />
@@ -29,15 +32,15 @@
 </template>
 <script>
 import emailjs from "emailjs-com";
-import AttendeeEmail from "@/components/AttendeeEmail.vue";
+
 import attendeeService from "@/services/AttendeeService";
+import AttendeeEmail from '../components/AttendeeEmail.vue';
 export default {
   data() {
     return {
       filteredAttendees: [],
-      filter: {
-        attendeeName: "",
-      }, 
+      attendeeName: "",
+     
     };
   },
   components: {
@@ -50,11 +53,11 @@ export default {
   },
   methods: {
     filteredList() {
-      if (this.filter.attendeeName != "") {
+      if (this.attendeeName != "") {
         this.filteredAttendees = this.filteredAttendees.filter((attendee) => {
           return attendee.attendeeName
             .toLowerCase()
-            .includes(this.filter.attendeeName.toLowerCase());
+            .includes(this.attendeeName.toLowerCase());
         });
       }
       return this.filteredAttendees;
@@ -101,3 +104,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.emailForm {
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+  background: rgb(243, 243, 243);
+  box-shadow: 0 0 0 2pt #346a82;
+  height: 50%;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+</style>
