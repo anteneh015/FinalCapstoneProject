@@ -1,41 +1,59 @@
 <template>
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
-    </form>
-  </div>
+  <v-container  bg fill-height grid-list-md text-xs-center>
+    <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+      Invalid username and password!
+    </div>
+
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="4">
+        <v-card class="elevation-12">
+          <v-toolbar color="#61A5c2" dark>
+            <v-toolbar-title>Login</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <span>Please login to your account</span>
+          </v-toolbar>
+
+          <v-card-text>
+            <div
+              class="alert alert-success grey--text"
+              role="alert"
+              v-if="this.$route.query.registration"
+            >
+              Thank you for registering, please sign in.
+            </div>
+
+            <v-form>
+              <v-text-field
+                label="Login"
+                name="login"
+                prepend-icon="mdi-robot-outline"
+                type="text"
+                v-model="user.username"
+              ></v-text-field>
+              <v-text-field
+                id="password"
+                label="Password"
+                name="password"
+                prepend-icon="mdi-lock-question"
+                type="password"
+                required
+                v-model="user.password"
+              ></v-text-field>
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="#61A5c2" dark router :to="{ name: 'register' }"
+              >Sign Up</v-btn
+            >
+            <v-btn @click="login()" color="#61A5c2" dark>Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
+
 
 <script>
 import authService from "../services/AuthService";
@@ -47,30 +65,30 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>

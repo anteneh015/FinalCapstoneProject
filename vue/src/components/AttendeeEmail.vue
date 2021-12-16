@@ -1,5 +1,5 @@
 <template>
-  <div class="attendee">
+  <div class="attendee" v-bind:attendeeEmail="attendeeEmail">
     <v-container fluid class="my-10 mx-16">
       <v-row no-gutters>
         <v-col cols="12" sm="4" md="2">
@@ -40,7 +40,7 @@
 
 export default {
   name: "attendeeEmail",
-  props: ["attendeeEmail"],
+  props: ["attendee"],
 };
 </script>
 

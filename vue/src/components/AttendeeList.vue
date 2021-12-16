@@ -63,6 +63,11 @@ export default {
   components: {
     Attendee,
   },
+   computed: {
+    listOfAttendees(){
+      return this.filteredList();
+    }
+  },
   methods: {
     filteredList() {
      
@@ -91,11 +96,7 @@ export default {
       return this.filteredAttendees;
     }
   },
-  computed: {
-    listOfAttendees(){
-      return this.filteredList();
-    }
-  },
+ 
   created() {
   attendeeService
     .getAllAttendees()

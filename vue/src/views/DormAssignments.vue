@@ -27,8 +27,8 @@
     </div>
     <v-btn color="success" class="submitButton" @click.prevent="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
 
-    <DormBoard id="board-1" class="dorm1 board" draggable="true" @camperDropped="change"></DormBoard>
-    <DormBoard id="board-2" class="dorm2 board" draggable="true" @camperDropped="change"></DormBoard>
+    <DormBoard id="board-1" class="dorm1 board" draggable="true" @drop.prevent="dropOnBoardOne"></DormBoard>
+    <DormBoard id="board-2" class="dorm2 board" draggable="true" @drop.prevent="dropOnBoardTwo"></DormBoard>
     <div class="walle">
       <v-img src="Wall-E-Dorm.png" max-width="170"></v-img>
     </div>
