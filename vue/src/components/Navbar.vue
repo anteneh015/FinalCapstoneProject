@@ -14,8 +14,6 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
-
       <v-btn text color="grey" router :to="{ name: 'home' }">
         <span>Home</span>
         <v-icon right>mdi-home-assistant</v-icon>
@@ -63,6 +61,12 @@ export default {
           route: "/",
           role: "ROLE_USER"
         },
+            {
+          icon: "mdi-information-outline",
+          text: "About",
+          route: "/about",
+          role: "ROLE_USER"
+        },
         {
           icon: "mdi-robot-outline",
           text: "Attendees",
@@ -82,12 +86,7 @@ export default {
           route: "/emails",
           role: "ROLE_USER"
         },
-          {
-          icon: "mdi-information-outline",
-          text: "About",
-          route: "/about",
-          role: "ROLE_USER"
-        },
+      
       ],
     };
   },

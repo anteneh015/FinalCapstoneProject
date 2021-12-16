@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height fluid>
+  <v-container  bg fill-height grid-list-md text-xs-center>
     <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
       Invalid username and password!
     </div>
