@@ -27,8 +27,8 @@
     </div>
     <v-btn color="success" class="submitButton" @click.prevent="snackbarSubmit">SAVE ASSIGNMENTS</v-btn>
 
-    <DormBoard id="board-1" class="dorm1 board" draggable="true" @drop.prevent="dropOnBoardOne"></DormBoard>
-    <DormBoard id="board-2" class="dorm2 board" draggable="true" @drop.prevent="dropOnBoardTwo"></DormBoard>
+    <DormBoard id="board-1" class="dorm1 board" draggable="true" @camperDropped="change"></DormBoard>
+    <DormBoard id="board-2" class="dorm2 board" draggable="true" @camperDropped="change"></DormBoard>
     <div class="walle">
       <v-img src="Wall-E-Dorm.png" max-width="170"></v-img>
     </div>
@@ -54,6 +54,10 @@ export default {
   },
   methods: {
     snackbarSubmit() {
+      //send info to database
+      //get 200 .then
+
+
       this.snackbar = true;
       setTimeout(() => {
         this.snackbar = false;
@@ -61,8 +65,9 @@ export default {
       }, 4000);
     },
     change(){
-      //call API
-    }
+      //reactive, everytime dropped, database is updated
+    },
+    
   },
   created() {
     this.attendees = this.$store.state.attendees;
@@ -80,11 +85,11 @@ export default {
   text-align: center;
 }
 .walle {
-  transform:translate(17%, -520%);
+  transform:translate(15%, -550%);
 }
 
 .eve {
-  transform: translate(90%, -580%);
+  transform: translate(92%, -615%);
 }
 
 .submitButton {
@@ -93,7 +98,7 @@ export default {
 
 .dormName1 {
   background: rgb(243, 243, 243);
-  transform: translate(35%, -880%);
+  transform: translate(35%, -980%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -101,7 +106,7 @@ export default {
 
 .dormName2 {
   background: rgb(243, 243, 243);
-  transform: translate(275%, -980%);
+  transform: translate(292%, -1080%);
   max-width: 301px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

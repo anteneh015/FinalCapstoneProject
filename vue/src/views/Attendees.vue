@@ -1,7 +1,7 @@
 <template>
   <div class="camp">
     <h1>{{ $store.state.campName }}</h1>
-   <br>
+    <br>
     <main class="list">
       <attendee-list />
     </main>
