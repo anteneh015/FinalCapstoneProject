@@ -15,5 +15,8 @@ export default {
 };
 </script>
 <style scoped>
-
+#abc {
+  background: url('/background3.jpg') no-repeat center center fixed !important;
+  background-size: cover;
+}
 </style>

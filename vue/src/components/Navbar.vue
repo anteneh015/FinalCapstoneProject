@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-avatar size="50">
-          <v-img class="mx-2" src="/logocrop.jpg" max-height="50" max-width="50" contain></v-img>
+          <v-img class="mx-2" src="/logo_transparent_background_black_outline_full.jpg" max-height="50" max-width="50" contain></v-img>
       </v-avatar>
 
       <v-toolbar-title class="text-uppercase grey--text">
