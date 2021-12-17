@@ -12,7 +12,7 @@
                 style="border: 2px solid #61a5c2"
               >
                 <option value="">All</option>
-                <option>recieved</option>
+                <option>received</option>
                 <option>unpaid</option>
               </select>
             </div>
