@@ -42,13 +42,13 @@ INSERT INTO dorms(dorm_id, dorm_name) VALUES (DEFAULT, 'Eve');
 
 
 
-INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Rachelle Rauh', 'rachelle123@gmail.com', '123 tech road, columbus, ohio, 43213', '614-121-4456', 'Jone Rauh', '614-122-9876');
+INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Rachelle Rauh', 'robotic.echo@gmail.com', '123 tech road, columbus, ohio, 43213', '614-121-4456', 'Jone Rauh', '614-122-9876');
 INSERT INTO attendees (attendee_id, guardian_id, dorm_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar, img_url)
 VALUES (DEFAULT, 1, 2, 1, 'Nikki Rauh', '2011-01-15', 'Female', 2, 'received', 'N/A', 'Dora', 'RandomGirl1.jpg');
 INSERT INTO attendees (attendee_id, guardian_id, dorm_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar, img_url)
 VALUES (DEFAULT, 1, 1, 1, 'Andy Rauh', '2016-05-17', 'Male', 1, 'received', 'N/A', 'Mike', 'RachelleBoy1.jpg');
                 
-INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Hanna Smith', 'hanna123@gmail.com', '8665 Gary Ave, Columbus, Ohio, 43098', '614-789-2328', 'Eva Smith', '614-898-2428');
+INSERT INTO guardians(guardian_id, guardian_name, email, address, guardian_phone, emergency_name, emergency_phone) VALUES (DEFAULT, 'Hanna Smith', 'robotic.echo@gmail.com', '8665 Gary Ave, Columbus, Ohio, 43098', '614-789-2328', 'Eva Smith', '614-898-2428');
 INSERT INTO attendees (attendee_id, guardian_id, dorm_id, user_id, attendee_name, date_of_birth, gender, age_group, payment_status, notes, registrar, img_url)
 VALUES (DEFAULT, 2, 2, 1, 'Garcia Smith', '2010-07-15', 'Female', 2, 'unpaid', 'Allergic to peanuts', 'Dora', 'RachelleGirl.jpg');
 
