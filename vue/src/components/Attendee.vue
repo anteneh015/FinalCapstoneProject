@@ -1,6 +1,6 @@
 <template>
   <div class="attendee">
-    <v-container fluid class="my-10 mx-16">
+    <v-container fluid class="my-9 mx-16">
       <v-row no-gutters>
         <v-col cols="12" sm="4" md="2">
           <div class="caption blue--text">Name</div>
@@ -17,7 +17,7 @@
           <div>{{ attendee.gender }}</div>
         </v-col>
 
-        <v-col cols="12" sm="4" md="2">
+        <v-col cols="12" sm="4" md="1">
           <div class="caption blue--text">Age Group</div>
           <div>{{ attendee.ageGroup }}</div>
         </v-col>
@@ -35,60 +35,16 @@
           </div>
         </v-col>
 
-        <!-- <v-col cols="12" sm="4" md="1">
+         <v-col cols="12" sm="4" md="1">
           <div class="caption blue--text">Registrar</div>
           <div>{{ attendee.registrar }}</div>
         </v-col>
 
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Guardian Name</div>
-          <div>{{ attendee.guardianName }}</div>
-        </v-col>
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Phone Number</div>
-          <div>{{ attendee.guardianPhone }}</div>
-        </v-col>
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Email</div>
-          <div>{{ attendee.email }}</div>
-        </v-col>
-
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Address</div>
-          <div>{{ attendee.address }}</div>
-        </v-col>
-
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Emgcy Name</div>
-          <div>{{ attendee.emgcyName }}</div>
-        </v-col>
-
-          <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Emgcy Phone</div>
-          <div>{{ attendee.emgcyPhone }}</div>
-        </v-col>
-
-        <v-col cols="12" sm="4" md="1">
-          <div class="caption blue--text">Notes</div>
-          <p>
-            <span v-if="!attendee.notes" class="body-2"
-              >No notes added</span
-            >
-            <span class="body-2">{{ attendee.notes }}</span>
-          </p>
-        </v-col> -->
-        <!-- <v-col cols="12" sm="4" md="1">
-          <Popup
-            :camper="camper"
-            @camperEdited="snackbar = true"
-            @camperUpdated="camperUpdated = true"
-          />
-        </v-col> -->
          <v-col cols="12" sm="4" md="1">
             <div class="text-center">
-               <v-chip class="ma-2" color="#61A5c2" text-color="black">
-                <router-link :to ="{ name: 'attendee', params:{id: attendee.attendeeId}}">Details</router-link>
-              </v-chip>
+              <v-btn color="#61A5c2" dark router :to="{ name: 'attendee', params:{id: attendee.attendeeId}}">
+                <span>Details</span>
+               </v-btn>
             </div>
          </v-col>
         </v-row>
@@ -107,8 +63,4 @@ export default {
 </script>
 
 <style scoped>
-.attendee {
-  border: cornflowerblue;
-  border-radius: 10px;
-}
 </style>

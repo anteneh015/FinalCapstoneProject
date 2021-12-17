@@ -1,19 +1,17 @@
 <template>
   <div class="attendee" v-bind:attendeeEmail="attendeeEmail">
-    <v-container fluid class="my-10 mx-16">
+    <v-container fluid>
       <v-row no-gutters>
-        <v-col cols="12" sm="4" md="2">
+        <v-col cols="12" sm="4" md="3">
           <div class="caption blue--text">Name</div>
           <div>{{ attendee.attendeeName }}</div>
         </v-col>
-
-      
 
         <v-col cols="12" sm="4" md="3">
           <div class="caption blue--text">Guardian Name</div>
           <div>{{ attendee.guardianName }}</div>
         </v-col>
-   
+
         <v-col cols="12" sm="4" md="4">
           <div class="caption blue--text">Email</div>
           <div>{{ attendee.email }}</div>
@@ -25,22 +23,20 @@
             <v-chip
               small
               :color="`${
-                attendee.paymentStatus == 'paid' ?  '#61A5c2' : '#9A031E'}`"
+                attendee.paymentStatus == 'recieved' ? '#61A5c2' : '#9A031E'
+              }`"
               class="white--text caption my-2"
-              >{{ attendee.paymentStatus == 'unpaid' ? "Unpaid" : "Paid" }}
+              >{{ attendee.paymentStatus == "unpaid" ? "unpaid" : "recieved" }}
             </v-chip>
           </div>
         </v-col>
-
-        </v-row>
-
+      </v-row>
       <v-divider></v-divider>
     </v-container>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "attendeeEmail",
   props: ["attendee"],

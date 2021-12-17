@@ -1,6 +1,6 @@
 <template>
   <div class="camp">
-    <h1>{{ $store.state.campName }}</h1>
+    <h1 class="font-weight-light">{{ $store.state.campName }}</h1>
     <br>
     <main class="list">
       <attendee-list />
